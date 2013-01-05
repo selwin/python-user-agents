@@ -1,0 +1,111 @@
+Python User Agents
+==================
+
+`user_agents` is a Python library that provides an easy way to identify devices like mobile phones, 
+tablets and their capabilities by parsing (browser) user agent strings. The goal is to reliably 
+detect whether:
+
+* User agent is a mobile, tablet or PC based device
+* User agent has touch capabilities (has touch screen)
+
+`user_agents` relies on the excellent `ua-parser <https://github.com/tobie/ua-parser>`_ to do the
+actual parsing of the raw user agent string.
+
+This library should be considered "alpha". Please post feature suggestions, bug or pull requests to
+identify more devices on Github.
+
+
+Installation
+============
+
+WARNING: This library should be considered "alpha". Use this in production at your own risk.
+
+Usage
+=====
+
+Various basic information that can help you identify visitors can be accessed `browser`, `device`
+and `os` attributes. For example::
+
+    import user_agents
+
+    # iPhone's user agent string
+    ua_string = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B179 Safari/7534.48.3'
+
+    # Accessing user agent's browser attributes
+    user_agent.browser  # returns Browser(family=u'Mobile Safari', version=(5, 1), version_string='5.1')
+    user_agent.browser.family  # returns 'Mobile Safari'
+    user_agent.browser.version  # returns (5, 1)
+    user_agent.browser.version_string   # returns '5.1'
+    
+    # Accessing user agent's operating system properties
+    user_agent.os  # returns OperatingSystem(family=u'iOS', version=(5, 1), version_string='5.1')
+    user_agent.os.family  # returns 'iOS'
+    user_agent.os.version  # returns (5, 1)
+    user_agent.os.version_string  # returns '5.1'
+    
+    # Accessing user agent's device properties
+    user_agent.device  # returns Device(family='iPhone')
+    user_agent.device.family  # returns 'iPhone'
+
+
+`user_agents` also expose a few other more "sophisticated" attributes that are derived from one or
+more basic attributes defined above. As for now, these attributes should correctly identify
+popular platforms/devices, pull requests to support smaller ones are always welcome.
+
+Currently these attributes are supported:
+
+* `is_mobile` - whether user agent is identified as a mobile phone (iPhone, Android phones, Blackberry, Windows Phone devices etc)
+* `is_tablet` - whether user agent is identified as a tablet device (iPad, Kindle Fire, Nexus 7 etc)
+* `is_pc` - whether user agent is identified to be running a traditional "desktop" OS (Windows, OS X, Linux)
+* `is_touch_capable` - whether user agent has touch capabilities
+
+
+For example::
+
+    import user_agents
+
+    # Let's start from an old, non touch Blackberry device
+    ua_string = 'BlackBerry9700/5.0.0.862 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/331 UNTRUSTED/1.0 3gpp-gba'
+    user_agent = user_agents.parse(ua_string)
+    user_agent.is_mobile # returns True
+    user_agent.is_tablet # returns False
+    user_agent.is_touch_capable # returns False
+    user_agent.is_pc # returns False
+
+    # Now a Samsung Galaxy S3
+    ua_string = 'Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; GT-I9300 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
+    user_agent = user_agents.parse(ua_string)
+    user_agent.is_mobile # returns True
+    user_agent.is_tablet # returns False
+    user_agent.is_touch_capable # returns True
+    user_agent.is_pc # returns False
+
+    # iPad's user agent string
+    ua_string = 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10'
+    user_agent = user_agents.parse(ua_string)
+    user_agent.is_mobile # returns False
+    user_agent.is_tablet # returns True
+    user_agent.is_touch_capable # returns True
+    user_agent.is_pc # returns False
+
+    # Kindle Fire's user agent string
+    ua_string = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us; Silk/1.1.0-80) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16 Silk-Accelerated=true'
+    user_agent = user_agents.parse(ua_string)
+    user_agent.is_mobile # returns False
+    user_agent.is_tablet # returns True
+    user_agent.is_touch_capable # returns True
+    user_agent.is_pc # returns False
+
+    # Touch capable Windows 8 device
+    ua_string = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; Touch)'
+    user_agent = user_agents.parse(ua_string)
+    user_agent.is_mobile # returns False
+    user_agent.is_tablet # returns False
+    user_agent.is_touch_capable # returns True
+    user_agent.is_pc # returns True
+
+
+Running Tests
+=============
+
+    python -m unittest discover

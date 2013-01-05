@@ -1,0 +1,165 @@
+from collections import namedtuple
+
+from ua_parser import user_agent_parser
+
+
+MOBILE_DEVICE_FAMILIES = (
+    'iPhone',
+    'iPod',
+    'Generic Smartphone',
+    'Generic Feature Phone',
+)
+
+TABLET_DEVICE_FAMILIES = (
+    'iPad',
+    'Blackberry Playbook',
+    'Kindle',
+    'Kindle Fire',
+)
+
+TOUCH_CAPABLE_OS_FAMILIES = (
+    'iOS',
+    'Android',
+    'Windows Phone OS',
+    'Windows RT',
+)
+
+TOUCH_CAPABLE_DEVICE_FAMILIES = (
+    'Blackberry Playbook',
+    'Kindle Fire',
+)
+
+
+def parse_version(major=None, minor=None, patch=None, patch_minor=None):
+    # Returns version number tuple, attributes will be integer if they're numbers
+    if major is not None and isinstance(major, basestring):
+        major = int(major) if major.isdigit() else major
+    if minor is not None and isinstance(minor, basestring):
+        minor = int(minor) if minor.isdigit() else minor
+    if patch is not None and isinstance(patch, basestring):
+        patch = int(patch) if patch.isdigit() else patch
+    if patch_minor is not None and isinstance(patch_minor, basestring):
+        patch_minor = int(patch_minor) if patch_minor.isdigit() else patch_minor
+    if patch_minor:
+        return (major, minor, patch, patch_minor)
+    elif patch:
+        return (major, minor, patch)
+    elif minor:
+        return (major, minor)
+    elif major:
+        return (major,)
+    else:
+        return tuple()
+
+
+Browser = namedtuple('Browser', ['family', 'version', 'version_string'])
+
+
+def parse_browser(family, major=None, minor=None, patch=None, patch_minor=None):
+    # Returns a browser object
+    version = parse_version(major, minor, patch)
+    version_string = '.'.join([str(v) for v in version])
+    return Browser(family, version, version_string)
+
+
+OperatingSystem = namedtuple('OperatingSystem', ['family', 'version', 'version_string'])
+
+
+def parse_operating_system(family, major=None, minor=None, patch=None, patch_minor=None):
+    version = parse_version(major, minor, patch)
+    version_string = '.'.join([str(v) for v in version])
+    return OperatingSystem(family, version, version_string)
+
+
+Device = namedtuple('Device', ['family'])
+
+
+def parse_device(family):
+    return Device(family)
+
+
+class UserAgent(object):
+
+    def __init__(self, user_agent_string):
+        ua_dict = user_agent_parser.Parse(user_agent_string)
+        self.ua_string = user_agent_string
+        self.os = parse_operating_system(**ua_dict['os'])
+        self.browser = parse_browser(**ua_dict['user_agent'])
+        self.device = parse_device(**ua_dict['device'])
+
+    
+    def _is_android_tablet(self):
+        # Newer Android tablets don't have "Mobile" in their user agent string,
+        # older ones like Galaxy Tab still have "Mobile" though they're not
+        if 'Mobile Safari' not in self.ua_string:
+            return True
+        if 'SCH-' in self.ua_string:
+            return True
+        return False
+
+    def _is_blackberry_touch_capable_device(self):
+        # A helper to determine whether a BB phone has touch capabilities
+        # Blackberry Bold Touch series begins with 99XX
+        if 'Blackberry 99' in self.device.family:
+            return True
+        if 'Blackberry 95' in self.device.family: # BB Storm devices
+            return True
+        if 'Blackberry 95' in self.device.family: # BB Torch devices
+            return True
+        return False
+
+    @property
+    def is_tablet(self):
+        if self.device.family in TABLET_DEVICE_FAMILIES:
+            return True
+        if (self.os.family == 'Android' and self._is_android_tablet()):
+            return True
+        if self.os.family == 'Windows RT':
+            return True
+        return False
+
+    @property
+    def is_mobile(self):
+        # First check for mobile device families
+        if self.device.family in MOBILE_DEVICE_FAMILIES:
+            return True
+        # Device is considered Mobile OS is Android and not tablet
+        # This is not fool proof but would have to suffice for now
+        if self.os.family == 'Android' and not self.is_tablet:
+            return True
+        if self.os.family == 'BlackBerry OS' and self.device.family != 'Blackberry Playbook':
+            return True
+        if self.os.family == 'Windows Phone OS':
+            return True
+        # TODO: remove after https://github.com/tobie/ua-parser/issues/126 is closed
+        if 'J2ME' in self.ua_string or 'MIDP' in self.ua_string:
+            return True
+        return False
+
+    @property
+    def is_touch_capable(self):
+        if self.os.family in TOUCH_CAPABLE_OS_FAMILIES:
+            return True
+        if self.device.family in TOUCH_CAPABLE_DEVICE_FAMILIES:
+            return True
+        if self.os.family == 'Windows 8' and 'Touch' in self.ua_string:
+            return True
+        if 'BlackBerry' in self.os.family and self._is_blackberry_touch_capable_device():
+            return True
+        return False
+
+    @property
+    def is_pc(self):
+        # Returns True for "PC" devices (Windows, Mac and Linux)
+        if 'Windows NT' in self.ua_string:
+            return True
+        # TODO: remove after https://github.com/tobie/ua-parser/issues/127 is closed
+        if self.os.family == 'Mac OS X' and 'Silk' not in self.ua_string:
+            return True
+        if 'Linux' in self.ua_string and 'X11' in self.ua_string:
+            return True
+        return False
+
+
+def parse(user_agent_string):
+    return UserAgent(user_agent_string)

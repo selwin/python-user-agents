@@ -1,14 +1,14 @@
 Python User Agents
 ==================
 
-`user_agents` is a Python library that provides an easy way to identify devices like mobile phones, 
+``user_agents`` is a Python library that provides an easy way to identify devices like mobile phones, 
 tablets and their capabilities by parsing (browser) user agent strings. The goal is to reliably 
 detect whether:
 
 * User agent is a mobile, tablet or PC based device
 * User agent has touch capabilities (has touch screen)
 
-`user_agents` relies on the excellent `ua-parser <https://github.com/tobie/ua-parser>`_ to do the
+``user_agents`` relies on the excellent `ua-parser <https://github.com/tobie/ua-parser>`_ to do the
 actual parsing of the raw user agent string.
 
 This library should be considered "alpha". Please post feature suggestions, bug or pull requests to
@@ -18,7 +18,10 @@ identify more devices on Github.
 Installation
 ============
 
-WARNING: This library should be considered "alpha". Use this in production at your own risk.
+WARNING: This library should be considered "alpha". Use this in production at your own risk. 
+``user-agents`` is hosted on `PyPI <http://pypi.python.org/pypi/user-agents/>`_ and can be installed as such::
+
+    pip install pyyaml ua-parser user-agents
 
 Usage
 =====
@@ -50,16 +53,16 @@ and `os` attributes. For example:
     user_agent.device.family  # returns 'iPhone'
 
 
-`user_agents` also expose a few other more "sophisticated" attributes that are derived from one or
+``user_agents`` also expose a few other more "sophisticated" attributes that are derived from one or
 more basic attributes defined above. As for now, these attributes should correctly identify
 popular platforms/devices, pull requests to support smaller ones are always welcome.
 
 Currently these attributes are supported:
 
-* `is_mobile` - whether user agent is identified as a mobile phone (iPhone, Android phones, Blackberry, Windows Phone devices etc)
-* `is_tablet` - whether user agent is identified as a tablet device (iPad, Kindle Fire, Nexus 7 etc)
-* `is_pc` - whether user agent is identified to be running a traditional "desktop" OS (Windows, OS X, Linux)
-* `is_touch_capable` - whether user agent has touch capabilities
+* ``is_mobile``: whether user agent is identified as a mobile phone (iPhone, Android phones, Blackberry, Windows Phone devices etc)
+* ``is_tablet``: whether user agent is identified as a tablet device (iPad, Kindle Fire, Nexus 7 etc)
+* ``is_pc``: whether user agent is identified to be running a traditional "desktop" OS (Windows, OS X, Linux)
+* ``is_touch_capable``: whether user agent has touch capabilities
 
 
 For example:

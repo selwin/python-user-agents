@@ -109,3 +109,11 @@ Running Tests
 =============
 
     python -m unittest discover
+
+
+Changelog
+=========
+
+Version 0.1
+-----------
+* Initial release

@@ -1,0 +1,8 @@
+node_modules/
+.DS*
+TAGS
+dist
+cabal-dev
+*.pyc
+build/
+py/ua_parser.egg-info/

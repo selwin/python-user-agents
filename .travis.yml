@@ -3,7 +3,6 @@ python:
   - "2.7"
 install:
   - "python setup.py install"
-  - "pip install ua-parser"
+  - "pip install pyyaml ua-parser"
 script:
-  - pip install ua-parser
   - python -m unittest discover

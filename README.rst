@@ -24,7 +24,9 @@ Usage
 =====
 
 Various basic information that can help you identify visitors can be accessed `browser`, `device`
-and `os` attributes. For example::
+and `os` attributes. For example:
+
+.. code-block:: python
 
     import user_agents
 
@@ -60,7 +62,9 @@ Currently these attributes are supported:
 * `is_touch_capable` - whether user agent has touch capabilities
 
 
-For example::
+For example:
+
+.. code-block:: python
 
     import user_agents
 

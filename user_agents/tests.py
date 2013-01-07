@@ -22,6 +22,8 @@ ie_touch_ua_string = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Triden
 mac_safari_ua_string = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2'
 windows_ie_ua_string = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'
 ubuntu_firefox_ua_string = 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1'
+google_bot_ua_string = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+nokia_n97_ua_string = 'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaN97-1/12.0.024; Profile/MIDP-2.1 Configuration/CLDC-1.1; en-us) AppleWebKit/525 (KHTML, like Gecko) BrowserNG/7.1.12344'
 
 iphone_ua = parse(iphone_ua_string)
 ipad_ua = parse(ipad_ua_string)
@@ -41,6 +43,8 @@ ie_touch_ua = parse(ie_touch_ua_string)
 mac_safari_ua = parse(mac_safari_ua_string)
 windows_ie_ua = parse(windows_ie_ua_string)
 ubuntu_firefox_ua = parse(ubuntu_firefox_ua_string)
+google_bot_ua = parse(google_bot_ua_string)
+nokia_n97_ua = parse(nokia_n97_ua_string)
 
 
 class UserAgentsTest(unittest.TestCase):
@@ -79,6 +83,8 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(windows_ie_ua.is_tablet)
         self.assertFalse(ubuntu_firefox_ua.is_tablet)
         self.assertFalse(j2me_opera_ua.is_tablet)
+        self.assertFalse(google_bot_ua.is_tablet)
+        self.assertFalse(nokia_n97_ua.is_tablet)
         self.assertTrue(windows_rt_ua.is_tablet)
         self.assertTrue(ipad_ua.is_tablet)
         self.assertTrue(playbook_ua.is_tablet)
@@ -92,6 +98,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertTrue(blackberry_bold_ua.is_mobile)
         self.assertTrue(windows_phone_ua.is_mobile)
         self.assertTrue(j2me_opera_ua.is_mobile)
+        self.assertTrue(nokia_n97_ua.is_mobile)
         self.assertFalse(windows_rt_ua.is_mobile)
         self.assertFalse(ipad_ua.is_mobile)
         self.assertFalse(playbook_ua.is_mobile)
@@ -102,6 +109,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(mac_safari_ua.is_mobile)
         self.assertFalse(windows_ie_ua.is_mobile)
         self.assertFalse(ubuntu_firefox_ua.is_mobile)
+        self.assertFalse(google_bot_ua.is_mobile)
 
     def test_is_touch_property(self):
         self.assertTrue(iphone_ua.is_touch_capable)
@@ -120,6 +128,8 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(mac_safari_ua.is_touch_capable)
         self.assertFalse(windows_ie_ua.is_touch_capable)
         self.assertFalse(ubuntu_firefox_ua.is_touch_capable)
+        self.assertFalse(google_bot_ua.is_touch_capable)
+        self.assertFalse(nokia_n97_ua.is_touch_capable)
 
     def test_is_pc(self):
         self.assertFalse(iphone_ua.is_pc)
@@ -133,8 +143,30 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(blackberry_torch_ua.is_pc)        
         self.assertFalse(blackberry_bold_ua.is_pc)
         self.assertFalse(j2me_opera_ua.is_pc)
+        self.assertFalse(google_bot_ua.is_pc)
+        self.assertFalse(nokia_n97_ua.is_pc)
         self.assertTrue(mac_safari_ua.is_pc)
         self.assertTrue(windows_ie_ua.is_pc)
         self.assertTrue(ubuntu_firefox_ua.is_pc)
         self.assertTrue(ie_touch_ua.is_pc)
         self.assertTrue(ie_ua.is_pc)
+
+    def test_is_spider(self):
+        self.assertTrue(google_bot_ua.is_spider)
+        self.assertFalse(iphone_ua.is_spider)
+        self.assertFalse(galaxy_s3_ua.is_spider)
+        self.assertFalse(ipad_ua.is_spider)
+        self.assertFalse(playbook_ua.is_spider)
+        self.assertFalse(kindle_fire_ua.is_spider)
+        self.assertFalse(nexus_7_ua.is_spider)
+        self.assertFalse(windows_phone_ua.is_spider)
+        self.assertFalse(blackberry_bold_touch_ua.is_spider)
+        self.assertFalse(blackberry_torch_ua.is_spider)        
+        self.assertFalse(blackberry_bold_ua.is_spider)
+        self.assertFalse(j2me_opera_ua.is_spider)        
+        self.assertFalse(mac_safari_ua.is_spider)
+        self.assertFalse(windows_ie_ua.is_spider)
+        self.assertFalse(ubuntu_firefox_ua.is_spider)
+        self.assertFalse(ie_touch_ua.is_spider)
+        self.assertFalse(ie_ua.is_spider)
+        self.assertFalse(nokia_n97_ua.is_spider)

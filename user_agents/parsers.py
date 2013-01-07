@@ -10,6 +10,11 @@ MOBILE_DEVICE_FAMILIES = (
     'Generic Feature Phone',
 )
 
+MOBILE_OS_FAMILIES = (
+    'Windows Phone OS',
+    'Symbian OS',
+)
+
 TABLET_DEVICE_FAMILIES = (
     'iPad',
     'Blackberry Playbook',
@@ -129,7 +134,7 @@ class UserAgent(object):
             return True
         if self.os.family == 'BlackBerry OS' and self.device.family != 'Blackberry Playbook':
             return True
-        if self.os.family == 'Windows Phone OS':
+        if self.os.family in MOBILE_OS_FAMILIES:
             return True
         # TODO: remove after https://github.com/tobie/ua-parser/issues/126 is closed
         if 'J2ME' in self.ua_string or 'MIDP' in self.ua_string:
@@ -138,6 +143,7 @@ class UserAgent(object):
 
     @property
     def is_touch_capable(self):
+        # TODO: detect touch capable Nokia devices
         if self.os.family in TOUCH_CAPABLE_OS_FAMILIES:
             return True
         if self.device.family in TOUCH_CAPABLE_DEVICE_FAMILIES:
@@ -159,6 +165,10 @@ class UserAgent(object):
         if 'Linux' in self.ua_string and 'X11' in self.ua_string:
             return True
         return False
+
+    @property
+    def is_spider(self):
+        return True if self.device.family == 'Spider' else False
 
 
 def parse(user_agent_string):

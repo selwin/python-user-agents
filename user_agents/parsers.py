@@ -167,7 +167,7 @@ class UserAgent(object):
         return False
 
     @property
-    def is_spider(self):
+    def is_bot(self):
         return True if self.device.family == 'Spider' else False
 
 

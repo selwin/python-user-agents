@@ -1,8 +1,8 @@
 Python User Agents
 ==================
 
-``user_agents`` is a Python library that provides an easy way to identify devices like mobile phones, 
-tablets and their capabilities by parsing (browser) user agent strings. The goal is to reliably 
+``user_agents`` is a Python library that provides an easy way to identify/detect devices like mobile
+phones, tablets and their capabilities by parsing (browser) user agent strings. The goal is to reliably 
 detect whether:
 
 * User agent is a mobile, tablet or PC based device
@@ -12,7 +12,7 @@ detect whether:
 actual parsing of the raw user agent string.
 
 This library should be considered "alpha". Please post feature suggestions, bug or pull requests to
-identify more devices on Github.
+identify more devices on `Github <https://github.com/selwin/python-user-agents>`_
 
 
 Installation
@@ -26,7 +26,7 @@ WARNING: This library should be considered "alpha". Use this in production at yo
     pip install pyyaml ua-parser user-agents
 
 Alternatively, you can also get the latest source code from
-`Github <https://github.com/selwin/python-user-agents>`_ and install it manually.
+`Github`_ and install it manually.
 
 Usage
 =====
@@ -69,6 +69,7 @@ Currently these attributes are supported:
 * ``is_tablet``: whether user agent is identified as a tablet device (iPad, Kindle Fire, Nexus 7 etc)
 * ``is_pc``: whether user agent is identified to be running a traditional "desktop" OS (Windows, OS X, Linux)
 * ``is_touch_capable``: whether user agent has touch capabilities
+* ``is_bot``: whether user agent is a search engine crawler/spider
 
 
 For example:
@@ -84,6 +85,7 @@ For example:
     user_agent.is_tablet # returns False
     user_agent.is_touch_capable # returns False
     user_agent.is_pc # returns False
+    user_agent.is_bot # returns False
 
     # Now a Samsung Galaxy S3
     ua_string = 'Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; GT-I9300 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
@@ -92,6 +94,7 @@ For example:
     user_agent.is_tablet # returns False
     user_agent.is_touch_capable # returns True
     user_agent.is_pc # returns False
+    user_agent.is_bot # returns False
 
     # iPad's user agent string
     ua_string = 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10'
@@ -100,6 +103,7 @@ For example:
     user_agent.is_tablet # returns True
     user_agent.is_touch_capable # returns True
     user_agent.is_pc # returns False
+    user_agent.is_bot # returns False
 
     # Kindle Fire's user agent string
     ua_string = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us; Silk/1.1.0-80) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16 Silk-Accelerated=true'
@@ -108,6 +112,7 @@ For example:
     user_agent.is_tablet # returns True
     user_agent.is_touch_capable # returns True
     user_agent.is_pc # returns False
+    user_agent.is_bot # returns False
 
     # Touch capable Windows 8 device
     ua_string = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; Touch)'
@@ -116,6 +121,7 @@ For example:
     user_agent.is_tablet # returns False
     user_agent.is_touch_capable # returns True
     user_agent.is_pc # returns True
+    user_agent.is_bot # returns False
 
 
 Running Tests
@@ -126,6 +132,11 @@ Running Tests
 
 Changelog
 =========
+
+Version 0.1.1
+-------------
+* Added ``is_bot`` property
+* Symbian OS devices are now detected as a mobile device
 
 Version 0.1
 -----------

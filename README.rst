@@ -133,6 +133,11 @@ Running Tests
 Changelog
 =========
 
+Version 0.2.0
+-------------
+* Fixed errors when running against newer versions if ua-parser
+* Support for Python 3
+
 Version 0.1.1
 -------------
 * Added ``is_bot`` property

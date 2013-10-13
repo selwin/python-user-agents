@@ -11,13 +11,15 @@ MOBILE_DEVICE_FAMILIES = (
 )
 
 MOBILE_OS_FAMILIES = (
-    'Windows Phone OS',
+    'Windows Phone',
+    'Windows Phone OS', # Earlier versions of ua-parser returns Windows Phone OS
     'Symbian OS',
 )
 
 TABLET_DEVICE_FAMILIES = (
     'iPad',
-    'Blackberry Playbook',
+    'BlackBerry Playbook',
+    'Blackberry Playbook', # Earlier versions of ua-parser returns "Blackberry" (caps)
     'Kindle',
     'Kindle Fire',
 )
@@ -25,11 +27,13 @@ TABLET_DEVICE_FAMILIES = (
 TOUCH_CAPABLE_OS_FAMILIES = (
     'iOS',
     'Android',
+    'Windows Phone',
     'Windows Phone OS',
     'Windows RT',
 )
 
 TOUCH_CAPABLE_DEVICE_FAMILIES = (
+    'BlackBerry Playbook',
     'Blackberry Playbook',
     'Kindle Fire',
 )

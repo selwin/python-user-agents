@@ -1,6 +1,16 @@
+import sys
 from collections import namedtuple
 
 from ua_parser import user_agent_parser
+
+
+PY2 = sys.version_info[0] == 2
+PY3 = sys.version_info[0] == 3
+
+if PY3:
+    string_types = str
+else:
+    string_types = basestring
 
 
 MOBILE_DEVICE_FAMILIES = (
@@ -19,7 +29,7 @@ MOBILE_OS_FAMILIES = (
 TABLET_DEVICE_FAMILIES = (
     'iPad',
     'BlackBerry Playbook',
-    'Blackberry Playbook', # Earlier versions of ua-parser returns "Blackberry" (caps)
+    'Blackberry Playbook', # Earlier versions of ua-parser returns "Blackberry" instead of "BlackBerry"
     'Kindle',
     'Kindle Fire',
 )
@@ -41,13 +51,13 @@ TOUCH_CAPABLE_DEVICE_FAMILIES = (
 
 def parse_version(major=None, minor=None, patch=None, patch_minor=None):
     # Returns version number tuple, attributes will be integer if they're numbers
-    if major is not None and isinstance(major, basestring):
+    if major is not None and isinstance(major, string_types):
         major = int(major) if major.isdigit() else major
-    if minor is not None and isinstance(minor, basestring):
+    if minor is not None and isinstance(minor, string_types):
         minor = int(minor) if minor.isdigit() else minor
-    if patch is not None and isinstance(patch, basestring):
+    if patch is not None and isinstance(patch, string_types):
         patch = int(patch) if patch.isdigit() else patch
-    if patch_minor is not None and isinstance(patch_minor, basestring):
+    if patch_minor is not None and isinstance(patch_minor, string_types):
         patch_minor = int(patch_minor) if patch_minor.isdigit() else patch_minor
     if patch_minor:
         return (major, minor, patch, patch_minor)

@@ -110,7 +110,8 @@ class UserAgent(object):
     def _is_android_tablet(self):
         # Newer Android tablets don't have "Mobile" in their user agent string,
         # older ones like Galaxy Tab still have "Mobile" though they're not
-        if 'Mobile Safari' not in self.ua_string:
+        if ('Mobile Safari' not in self.ua_string and
+                self.browser.family != "Firefox Mobile"):
             return True
         if 'SCH-' in self.ua_string:
             return True

@@ -24,6 +24,7 @@ windows_ie_ua_string = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Tride
 ubuntu_firefox_ua_string = 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1'
 google_bot_ua_string = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
 nokia_n97_ua_string = 'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaN97-1/12.0.024; Profile/MIDP-2.1 Configuration/CLDC-1.1; en-us) AppleWebKit/525 (KHTML, like Gecko) BrowserNG/7.1.12344'
+android_firefox_aurora_ua_string = 'Mozilla/5.0 (Android; Mobile; rv:27.0) Gecko/27.0 Firefox/27.0'
 
 iphone_ua = parse(iphone_ua_string)
 ipad_ua = parse(ipad_ua_string)
@@ -45,6 +46,7 @@ windows_ie_ua = parse(windows_ie_ua_string)
 ubuntu_firefox_ua = parse(ubuntu_firefox_ua_string)
 google_bot_ua = parse(google_bot_ua_string)
 nokia_n97_ua = parse(nokia_n97_ua_string)
+android_firefox_aurora_ua = parse(android_firefox_aurora_ua_string)
 
 
 class UserAgentsTest(unittest.TestCase):
@@ -90,6 +92,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertTrue(playbook_ua.is_tablet)
         self.assertTrue(kindle_fire_ua.is_tablet)
         self.assertTrue(nexus_7_ua.is_tablet)
+        self.assertFalse(android_firefox_aurora_ua.is_tablet)
 
     def test_is_mobile_property(self):
         self.assertTrue(iphone_ua.is_mobile)
@@ -110,6 +113,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(windows_ie_ua.is_mobile)
         self.assertFalse(ubuntu_firefox_ua.is_mobile)
         self.assertFalse(google_bot_ua.is_mobile)
+        self.assertTrue(android_firefox_aurora_ua.is_mobile)
 
     def test_is_touch_property(self):
         self.assertTrue(iphone_ua.is_touch_capable)
@@ -130,6 +134,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(ubuntu_firefox_ua.is_touch_capable)
         self.assertFalse(google_bot_ua.is_touch_capable)
         self.assertFalse(nokia_n97_ua.is_touch_capable)
+        self.assertTrue(android_firefox_aurora_ua.is_touch_capable)
 
     def test_is_pc(self):
         self.assertFalse(iphone_ua.is_pc)
@@ -150,6 +155,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertTrue(ubuntu_firefox_ua.is_pc)
         self.assertTrue(ie_touch_ua.is_pc)
         self.assertTrue(ie_ua.is_pc)
+        self.assertFalse(android_firefox_aurora_ua.is_pc)
 
     def test_is_bot(self):
         self.assertTrue(google_bot_ua.is_bot)
@@ -170,3 +176,4 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(ie_touch_ua.is_bot)
         self.assertFalse(ie_ua.is_bot)
         self.assertFalse(nokia_n97_ua.is_bot)
+        self.assertFalse(android_firefox_aurora_ua.is_bot)

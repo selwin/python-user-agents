@@ -58,6 +58,9 @@ and `os` attributes. For example:
     user_agent.device  # returns Device(family='iPhone')
     user_agent.device.family  # returns 'iPhone'
 
+    # Viewing a pretty string version
+    str(user_agent) # returns "iPhone / iOS 5.1 / Mobile Safari 5.1"
+
 
 ``user_agents`` also expose a few other more "sophisticated" attributes that are derived from one or
 more basic attributes defined above. As for now, these attributes should correctly identify
@@ -86,6 +89,7 @@ For example:
     user_agent.is_touch_capable # returns False
     user_agent.is_pc # returns False
     user_agent.is_bot # returns False
+    str(user_agent) # returns "BlackBerry 9700 / BlackBerry OS 5 / BlackBerry 9700"
 
     # Now a Samsung Galaxy S3
     ua_string = 'Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; GT-I9300 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
@@ -95,6 +99,7 @@ For example:
     user_agent.is_touch_capable # returns True
     user_agent.is_pc # returns False
     user_agent.is_bot # returns False
+    str(user_agent) # returns "GT-I9300 / Android 4.0.4 / Android 4.0.4"
 
     # iPad's user agent string
     ua_string = 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10'
@@ -104,6 +109,7 @@ For example:
     user_agent.is_touch_capable # returns True
     user_agent.is_pc # returns False
     user_agent.is_bot # returns False
+    str(user_agent) # returns "iPad / iOS 3.2 / Mobile Safari 4.0.4"
 
     # Kindle Fire's user agent string
     ua_string = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us; Silk/1.1.0-80) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16 Silk-Accelerated=true'
@@ -113,6 +119,7 @@ For example:
     user_agent.is_touch_capable # returns True
     user_agent.is_pc # returns False
     user_agent.is_bot # returns False
+    str(user_agent) # returns "Kindle Fire / Android / Amazon Silk 1.1.0-80"
 
     # Touch capable Windows 8 device
     ua_string = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; Touch)'
@@ -122,6 +129,7 @@ For example:
     user_agent.is_touch_capable # returns True
     user_agent.is_pc # returns True
     user_agent.is_bot # returns False
+    str(user_agent) # returns "PC / Windows 8 / IE 10"
 
 
 Running Tests
@@ -132,6 +140,10 @@ Running Tests
 
 Changelog
 =========
+
+Version 0.3.0
+-------------
+* Added __str__ method for convenience of pretty string
 
 Version 0.2.0
 -------------

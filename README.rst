@@ -2,8 +2,7 @@ Python User Agents
 ==================
 
 ``user_agents`` is a Python library that provides an easy way to identify/detect devices like mobile
-phones, tablets and their capabilities by parsing (browser) user agent strings. The goal is to reliably 
-detect whether:
+phones, tablets and their capabilities by parsing (browser/HTTP) user agent strings. The goal is to reliably detect whether:
 
 * User agent is a mobile, tablet or PC based device
 * User agent has touch capabilities (has touch screen)

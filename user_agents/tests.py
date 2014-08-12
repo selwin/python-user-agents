@@ -200,3 +200,8 @@ class UserAgentsTest(unittest.TestCase):
         self.assertEqual(str(google_bot_ua), "Spider / Other / Googlebot 2.1")
         self.assertEqual(str(nokia_n97_ua), "Nokia N97 / Symbian OS 9.4 / Nokia Browser 7.1.12344")
         self.assertEqual(str(android_firefox_aurora_ua), "Other / Android / Firefox Mobile 27")
+
+    def test_unicode_strings(self):
+        unicode_ua_str = unicode(iphone_ua)
+        self.assertEqual(unicode_ua_str, u"iPhone / iOS 5.1 / Mobile Safari 5.1")
+        self.assertTrue(isinstance(unicode_ua_str, unicode))

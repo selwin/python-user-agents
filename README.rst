@@ -142,7 +142,7 @@ Changelog
 
 Version 0.3.0
 -------------
-* Added __str__ method for convenience of pretty string
+* Added __str__/__unicode__ methods for convenience of pretty string
 
 Version 0.2.0
 -------------

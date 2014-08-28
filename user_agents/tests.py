@@ -202,6 +202,14 @@ class UserAgentsTest(unittest.TestCase):
         self.assertEqual(str(android_firefox_aurora_ua), "Other / Android / Firefox Mobile 27")
 
     def test_unicode_strings(self):
-        unicode_ua_str = unicode(iphone_ua)
-        self.assertEqual(unicode_ua_str, u"iPhone / iOS 5.1 / Mobile Safari 5.1")
-        self.assertTrue(isinstance(unicode_ua_str, unicode))
+        try:
+            # Python 2
+            unicode_ua_str = unicode(iphone_ua)
+            self.assertEqual(unicode_ua_str,
+                             u"iPhone / iOS 5.1 / Mobile Safari 5.1")
+            self.assertTrue(isinstance(unicode_ua_str, unicode))
+        except NameError:
+            # Python 3
+            unicode_ua_str = str(iphone_ua)
+            self.assertEqual(unicode_ua_str,
+                             "iPhone / iOS 5.1 / Mobile Safari 5.1")

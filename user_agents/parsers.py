@@ -106,7 +106,15 @@ class UserAgent(object):
         self.browser = parse_browser(**ua_dict['user_agent'])
         self.device = parse_device(**ua_dict['device'])
 
-    
+    def __str__(self):
+        device = self.is_pc and "PC" or self.device.family
+        os = ("%s %s" % (self.os.family, self.os.version_string)).strip()
+        browser = ("%s %s" % (self.browser.family, self.browser.version_string)).strip()
+        return " / ".join([device, os, browser])
+
+    def __unicode__(self):
+        return unicode(str(self))
+
     def _is_android_tablet(self):
         # Newer Android tablets don't have "Mobile" in their user agent string,
         # older ones like Galaxy Tab still have "Mobile" though they're not

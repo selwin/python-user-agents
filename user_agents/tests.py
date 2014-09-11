@@ -1,3 +1,5 @@
+# flake8: noqa
+
 import unittest
 
 from ua_parser import user_agent_parser
@@ -25,6 +27,11 @@ ubuntu_firefox_ua_string = 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko
 google_bot_ua_string = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
 nokia_n97_ua_string = 'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaN97-1/12.0.024; Profile/MIDP-2.1 Configuration/CLDC-1.1; en-us) AppleWebKit/525 (KHTML, like Gecko) BrowserNG/7.1.12344'
 android_firefox_aurora_ua_string = 'Mozilla/5.0 (Android; Mobile; rv:27.0) Gecko/27.0 Firefox/27.0'
+samsung_galaxy_s_ua_string = 'Mozilla/5.0 (Linux; Android 4.4.2; en-us; SAMSUNG SCH-I545 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.5 Chrome/28.0.1500.94 Mobile Safari/537.36'
+playstation_vita_ua_string = 'Mozilla/5.0 (PlayStation Vita 3.12) AppleWebKit/536.26 (KHTML, like Gecko) Silk/3.2'
+playstation_ua_string = 'Mozilla/5.0 (PLAYSTATION 3 4.60) AppleWebKit/531.22.8 (KHTML, like Gecko)'
+samsung_gt_ua_string = 'Mozilla/5.0 (SAMSUNG; SAMSUNG-GT-S8530/S8530DDLC2; U; Bada/2.0; en-us) AppleWebKit/534.20 (KHTML, like Gecko) Dolfin/3.0 Mobile WVGA SMM-MMS/1.2.0 OPN-B'
+
 
 iphone_ua = parse(iphone_ua_string)
 ipad_ua = parse(ipad_ua_string)
@@ -47,6 +54,10 @@ ubuntu_firefox_ua = parse(ubuntu_firefox_ua_string)
 google_bot_ua = parse(google_bot_ua_string)
 nokia_n97_ua = parse(nokia_n97_ua_string)
 android_firefox_aurora_ua = parse(android_firefox_aurora_ua_string)
+samsung_galaxy_s_ua = parse(samsung_galaxy_s_ua_string)
+playstation_vita_ua = parse(playstation_vita_ua_string)
+playstation_ua = parse(playstation_ua_string)
+samsung_gt_ua = parse(samsung_gt_ua_string)
 
 
 class UserAgentsTest(unittest.TestCase):
@@ -61,7 +72,7 @@ class UserAgentsTest(unittest.TestCase):
             iphone_ua.browser.version,
             (int(ua_dict['user_agent']['major']), int(ua_dict['user_agent']['minor']))
         )
-        
+
         # Ensure os attributes are assigned correctly
         self.assertEqual(iphone_ua.os.family, ua_dict['os']['family'])
         self.assertEqual(
@@ -93,6 +104,11 @@ class UserAgentsTest(unittest.TestCase):
         self.assertTrue(kindle_fire_ua.is_tablet)
         self.assertTrue(nexus_7_ua.is_tablet)
         self.assertFalse(android_firefox_aurora_ua.is_tablet)
+        self.assertFalse(samsung_galaxy_s_ua.is_tablet)
+        self.assertFalse(playstation_vita_ua.is_tablet)
+        self.assertFalse(playstation_ua.is_tablet)
+        self.assertFalse(samsung_gt_ua.is_tablet)
+
 
     def test_is_mobile_property(self):
         self.assertTrue(iphone_ua.is_mobile)
@@ -114,6 +130,11 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(ubuntu_firefox_ua.is_mobile)
         self.assertFalse(google_bot_ua.is_mobile)
         self.assertTrue(android_firefox_aurora_ua.is_mobile)
+        self.assertTrue(samsung_galaxy_s_ua.is_mobile)
+        self.assertTrue(playstation_vita_ua.is_mobile)
+        self.assertFalse(playstation_ua.is_mobile)
+        self.assertTrue(samsung_gt_ua.is_mobile)
+
 
     def test_is_touch_property(self):
         self.assertTrue(iphone_ua.is_touch_capable)
@@ -135,6 +156,11 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(google_bot_ua.is_touch_capable)
         self.assertFalse(nokia_n97_ua.is_touch_capable)
         self.assertTrue(android_firefox_aurora_ua.is_touch_capable)
+        self.assertTrue(samsung_galaxy_s_ua.is_touch_capable)
+        self.assertFalse(playstation_vita_ua.is_touch_capable)
+        self.assertFalse(playstation_ua.is_touch_capable)
+        self.assertFalse(samsung_gt_ua.is_touch_capable)
+
 
     def test_is_pc(self):
         self.assertFalse(iphone_ua.is_pc)
@@ -145,7 +171,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(nexus_7_ua.is_pc)
         self.assertFalse(windows_phone_ua.is_pc)
         self.assertFalse(blackberry_bold_touch_ua.is_pc)
-        self.assertFalse(blackberry_torch_ua.is_pc)        
+        self.assertFalse(blackberry_torch_ua.is_pc)
         self.assertFalse(blackberry_bold_ua.is_pc)
         self.assertFalse(j2me_opera_ua.is_pc)
         self.assertFalse(google_bot_ua.is_pc)
@@ -156,6 +182,11 @@ class UserAgentsTest(unittest.TestCase):
         self.assertTrue(ie_touch_ua.is_pc)
         self.assertTrue(ie_ua.is_pc)
         self.assertFalse(android_firefox_aurora_ua.is_pc)
+        self.assertFalse(samsung_galaxy_s_ua.is_pc)
+        self.assertFalse(playstation_vita_ua.is_pc)
+        self.assertFalse(playstation_ua.is_pc)
+        self.assertFalse(samsung_gt_ua.is_pc)
+
 
     def test_is_bot(self):
         self.assertTrue(google_bot_ua.is_bot)
@@ -167,9 +198,9 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(nexus_7_ua.is_bot)
         self.assertFalse(windows_phone_ua.is_bot)
         self.assertFalse(blackberry_bold_touch_ua.is_bot)
-        self.assertFalse(blackberry_torch_ua.is_bot)        
+        self.assertFalse(blackberry_torch_ua.is_bot)
         self.assertFalse(blackberry_bold_ua.is_bot)
-        self.assertFalse(j2me_opera_ua.is_bot)        
+        self.assertFalse(j2me_opera_ua.is_bot)
         self.assertFalse(mac_safari_ua.is_bot)
         self.assertFalse(windows_ie_ua.is_bot)
         self.assertFalse(ubuntu_firefox_ua.is_bot)
@@ -177,6 +208,11 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(ie_ua.is_bot)
         self.assertFalse(nokia_n97_ua.is_bot)
         self.assertFalse(android_firefox_aurora_ua.is_bot)
+        self.assertFalse(samsung_galaxy_s_ua.is_bot)
+        self.assertFalse(playstation_vita_ua.is_bot)
+        self.assertFalse(playstation_ua.is_bot)
+        self.assertFalse(samsung_gt_ua.is_bot)
+
 
     def test_strings(self):
         self.assertEqual(str(iphone_ua), "iPhone / iOS 5.1 / Mobile Safari 5.1")

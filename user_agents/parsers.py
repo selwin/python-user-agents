@@ -32,6 +32,10 @@ TABLET_DEVICE_FAMILIES = (
     'Blackberry Playbook',  # Earlier versions of ua-parser returns "Blackberry" instead of "BlackBerry"
     'Kindle',
     'Kindle Fire',
+    'Kindle Fire HD',
+    'Galaxy Tab',
+    'Xoom',
+    'Dell Streak',
 )
 
 TOUCH_CAPABLE_OS_FAMILIES = (

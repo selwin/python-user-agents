@@ -22,14 +22,14 @@ MOBILE_DEVICE_FAMILIES = (
 
 MOBILE_OS_FAMILIES = (
     'Windows Phone',
-    'Windows Phone OS', # Earlier versions of ua-parser returns Windows Phone OS
+    'Windows Phone OS',  # Earlier versions of ua-parser returns Windows Phone OS
     'Symbian OS',
 )
 
 TABLET_DEVICE_FAMILIES = (
     'iPad',
     'BlackBerry Playbook',
-    'Blackberry Playbook', # Earlier versions of ua-parser returns "Blackberry" instead of "BlackBerry"
+    'Blackberry Playbook',  # Earlier versions of ua-parser returns "Blackberry" instead of "BlackBerry"
     'Kindle',
     'Kindle Fire',
 )
@@ -130,9 +130,9 @@ class UserAgent(object):
         # Blackberry Bold Touch series begins with 99XX
         if 'Blackberry 99' in self.device.family:
             return True
-        if 'Blackberry 95' in self.device.family: # BB Storm devices
+        if 'Blackberry 95' in self.device.family:  # BB Storm devices
             return True
-        if 'Blackberry 95' in self.device.family: # BB Torch devices
+        if 'Blackberry 95' in self.device.family:  # BB Torch devices
             return True
         return False
 

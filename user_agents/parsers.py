@@ -125,8 +125,6 @@ class UserAgent(object):
         if ('Mobile Safari' not in self.ua_string and
                 self.browser.family != "Firefox Mobile"):
             return True
-        if 'SCH-' in self.ua_string:
-            return True
         return False
 
     def _is_blackberry_touch_capable_device(self):

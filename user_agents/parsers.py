@@ -18,12 +18,14 @@ MOBILE_DEVICE_FAMILIES = (
     'iPod',
     'Generic Smartphone',
     'Generic Feature Phone',
+    'PlayStation Vita',
 )
 
 MOBILE_OS_FAMILIES = (
     'Windows Phone',
     'Windows Phone OS',  # Earlier versions of ua-parser returns Windows Phone OS
     'Symbian OS',
+    'Bada',
 )
 
 TABLET_DEVICE_FAMILIES = (

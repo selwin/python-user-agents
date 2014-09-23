@@ -125,6 +125,15 @@
         "ua_string": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2",
         "str": "PC / Mac OS X 10.6.8 / WebKit Nightly 537.13"
     },
+    "nexus_5": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (Linux; Android 4.4.4; Nexus 5 Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.117 Mobile Safari/537.36",
+        "str": "Nexus 5 / Android 4.4.4 / Chrome Mobile 37.0.2062"
+    },
     "nexus_7": {
         "is_bot": false,
         "is_mobile": false,
@@ -178,7 +187,25 @@
         "ua_string": "Mozilla/5.0 (Linux; Android 4.4.2; en-us; SAMSUNG SCH-I545 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.5 Chrome/28.0.1500.94 Mobile Safari/537.36",
         "str": "SAMSUNG SCH-I545 / Android 4.4.2 / Chrome Mobile 28.0.1500"
     },
-    "samsung_gt": {
+    "samsung_galaxy_s_iii_mini": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (Linux; Android 4.1.2; GT-I8190 Build/JZO54K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.117 Mobile Safari/537.36",
+        "str": "GT-I8190 / Android 4.1.2 / Chrome Mobile 37.0.2062"
+    },
+    "samsung_sm_galaxy_s5": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (Linux; Android 4.4.2; en-gb; SAMSUNG SM-G900F Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.6 Chrome/28.0.1500.94 Mobile Safari/537.36",
+        "str": "SAMSUNG SM-G900F / Android 4.4.2 / Chrome Mobile 28.0.1500"
+    },
+    "samsung_wave_ii": {
         "is_bot": false,
         "is_mobile": true,
         "is_pc": false,

@@ -56,7 +56,8 @@ def test_wrapper(items):
         attrs = ('is_bot', 'is_mobile',
                  'is_pc', 'is_tablet', 'is_touch_capable')
         for attr in attrs:
-            self.assertEqual(getattr(items['user_agent'], attr), items[attr])
+            self.assertEqual(
+                getattr(items['user_agent'], attr), items[attr], msg=attr)
         self.assertEqual(str(items['user_agent']), items['str'])
     return test_func
 

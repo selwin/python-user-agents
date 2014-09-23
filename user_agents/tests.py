@@ -1,6 +1,5 @@
 import json
 import os
-import path
 import unittest
 
 from ua_parser import user_agent_parser
@@ -47,7 +46,7 @@ class UserAgentsTest(unittest.TestCase):
                              "iPhone / iOS 5.1 / Mobile Safari 5.1")
 
 
-with open(os.path.join(path.path(__file__).dirname(), 'devices.json')) as f:
+with open(os.path.join(os.path.dirname(__file__), 'devices.json')) as f:
     devices = json.load(f)
 
 

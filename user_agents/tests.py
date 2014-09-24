@@ -4,6 +4,7 @@ import unittest
 
 from ua_parser import user_agent_parser
 from .parsers import parse
+from . import compat
 
 
 class UserAgentsTest(unittest.TestCase):
@@ -60,6 +61,6 @@ def test_wrapper(items):
         self.assertEqual(str(items['user_agent']), items['str'])
     return test_func
 
-for device, items in devices.iteritems():
+for device, items in compat.iteritems(devices):
     items['user_agent'] = parse(items['ua_string'])
     setattr(UserAgentsTest, 'test_' + device, test_wrapper(items))

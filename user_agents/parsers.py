@@ -18,20 +18,26 @@ MOBILE_DEVICE_FAMILIES = (
     'iPod',
     'Generic Smartphone',
     'Generic Feature Phone',
+    'PlayStation Vita',
 )
 
 MOBILE_OS_FAMILIES = (
     'Windows Phone',
-    'Windows Phone OS', # Earlier versions of ua-parser returns Windows Phone OS
+    'Windows Phone OS',  # Earlier versions of ua-parser returns Windows Phone OS
     'Symbian OS',
+    'Bada',
 )
 
 TABLET_DEVICE_FAMILIES = (
     'iPad',
     'BlackBerry Playbook',
-    'Blackberry Playbook', # Earlier versions of ua-parser returns "Blackberry" instead of "BlackBerry"
+    'Blackberry Playbook',  # Earlier versions of ua-parser returns "Blackberry" instead of "BlackBerry"
     'Kindle',
     'Kindle Fire',
+    'Kindle Fire HD',
+    'Galaxy Tab',
+    'Xoom',
+    'Dell Streak',
 )
 
 TOUCH_CAPABLE_OS_FAMILIES = (
@@ -121,8 +127,6 @@ class UserAgent(object):
         if ('Mobile Safari' not in self.ua_string and
                 self.browser.family != "Firefox Mobile"):
             return True
-        if 'SCH-' in self.ua_string:
-            return True
         return False
 
     def _is_blackberry_touch_capable_device(self):
@@ -130,9 +134,9 @@ class UserAgent(object):
         # Blackberry Bold Touch series begins with 99XX
         if 'Blackberry 99' in self.device.family:
             return True
-        if 'Blackberry 95' in self.device.family: # BB Storm devices
+        if 'Blackberry 95' in self.device.family:  # BB Storm devices
             return True
-        if 'Blackberry 95' in self.device.family: # BB Torch devices
+        if 'Blackberry 95' in self.device.family:  # BB Torch devices
             return True
         return False
 

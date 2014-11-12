@@ -249,6 +249,15 @@
         "is_touch_capable": true,
         "ua_string": "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0)",
         "str": "PC / Windows RT / IE 10"
+    },
+    "googlebot_mobile": {
+        "is_bot": true,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": false,
+        "ua_string": "Mozilla/5.0 (iPhone; U; CPU iPhone OS) (compatible; Googlebot-Mobile/2.1; http://www.google.com/bot.html)",
+        "str": "Spider / Other / Mobile Safari"
     }
 }
 

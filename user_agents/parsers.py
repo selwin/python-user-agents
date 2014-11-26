@@ -175,7 +175,7 @@ class UserAgent(object):
             return True
         if self.device.family in TOUCH_CAPABLE_DEVICE_FAMILIES:
             return True
-        if self.os.family == 'Windows 8' and 'Touch' in self.ua_string:
+        if self.os.family in ('Windows', 'Windows 8') and 'Touch' in self.ua_string:
             return True
         if 'BlackBerry' in self.os.family and self._is_blackberry_touch_capable_device():
             return True

@@ -166,6 +166,9 @@ class UserAgent(object):
         # TODO: remove after https://github.com/tobie/ua-parser/issues/126 is closed
         if 'J2ME' in self.ua_string or 'MIDP' in self.ua_string:
             return True
+        # Mobile Spiders should be identified as mobile
+        if self.device.family == 'Spider' and 'Mobile' in self.browser.family:
+            return True
         return False
 
     @property

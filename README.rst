@@ -139,6 +139,10 @@ Running Tests
 Changelog
 =========
 
+Version 0.3.1
+-------------
+* user_agent.is_mobile returns True when mobile spider is detected
+
 Version 0.3.0
 -------------
 * Added __str__/__unicode__ methods for convenience of pretty string

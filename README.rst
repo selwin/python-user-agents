@@ -19,7 +19,6 @@ Installation
 
 .. image:: https://secure.travis-ci.org/selwin/python-user-agents.png
 
-WARNING: This library should be considered "alpha". Use this in production at your own risk. 
 ``user-agents`` is hosted on `PyPI <http://pypi.python.org/pypi/user-agents/>`_ and can be installed as such::
 
     pip install pyyaml ua-parser user-agents

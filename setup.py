@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name='user-agents',
-    version='0.3.0',
+    version='0.3.1',
     author='Selwin Ong',
     author_email='selwin.ong@gmail.com',
     packages=['user_agents'],
@@ -13,7 +13,7 @@ setup(
     long_description=open('README.rst').read(),
     zip_safe=False,
     include_package_data=True,
-    package_data = { '': ['README.rst'] },
+    package_data={'': ['README.rst']},
     install_requires=['ua-parser'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

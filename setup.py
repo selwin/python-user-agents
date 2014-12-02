@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name='user-agents',
-    version='0.3.1',
+    version='0.3.2',
     author='Selwin Ong',
     author_email='selwin.ong@gmail.com',
     packages=['user_agents'],

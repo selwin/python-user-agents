@@ -167,7 +167,7 @@ class UserAgent(object):
         if 'J2ME' in self.ua_string or 'MIDP' in self.ua_string:
             return True
         # Mobile Spiders should be identified as mobile
-        if self.device.family == 'Spider' and 'Mobile' in self.browser.family:
+        if self.device.family == 'Spider' and 'Mobile' in self.ua_string:
             return True
         return False
 

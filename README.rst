@@ -139,6 +139,11 @@ Running Tests
 Changelog
 =========
 
+Version 0.3.2
+-------------
+* Better mobile detection
+* Better PC detection
+
 Version 0.3.1
 -------------
 * user_agent.is_mobile returns True when mobile spider is detected

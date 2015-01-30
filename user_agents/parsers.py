@@ -21,6 +21,13 @@ MOBILE_DEVICE_FAMILIES = (
     'PlayStation Vita',
 )
 
+PC_OS_FAMILIES = (
+    'Windows 95',
+    'Windows 98',
+    'Windows ME',
+    'Solaris',
+)
+
 MOBILE_OS_FAMILIES = (
     'Windows Phone',
     'Windows Phone OS',  # Earlier versions of ua-parser returns Windows Phone OS
@@ -201,7 +208,7 @@ class UserAgent(object):
     @property
     def is_pc(self):
         # Returns True for "PC" devices (Windows, Mac and Linux)
-        if 'Windows NT' in self.ua_string:
+        if 'Windows NT' in self.ua_string or self.os.family in PC_OS_FAMILIES:
             return True
         # TODO: remove after https://github.com/tobie/ua-parser/issues/127 is closed
         if self.os.family == 'Mac OS X' and 'Silk' not in self.ua_string:

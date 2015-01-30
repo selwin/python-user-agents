@@ -303,6 +303,24 @@
         "is_touch_capable": false,
         "ua_string": "Opera/9.80 (BREW; Opera Mini/5.0/27.2370; U; en) Presto/2.8.119 240X320 Samsung SCH-U380",
         "str": "Opera / Android 2.3.3 / Opera Mobile 11.50"
+    },
+    "windows_95": {
+        "is_bot": false,
+        "is_mobile": false,
+        "is_pc": true,
+        "is_tablet": false,
+        "is_touch_capable": false,
+        "ua_string": "Mozilla/5.0 (Windows; U; Win 9x 4.90; en-GB; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1",
+        "str": "Other / Windows ME / Firefox 2"
+    },
+    "solaris": {
+        "is_bot": false,
+        "is_mobile": false,
+        "is_pc": true,
+        "is_tablet": false,
+        "is_touch_capable": false,
+        "ua_string": "Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.6) Gecko/20040503",
+        "str": "Other / Solaris / Other"
     }
 }
 

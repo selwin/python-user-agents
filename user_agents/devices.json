@@ -258,6 +258,42 @@
         "is_touch_capable": false,
         "ua_string": "Mozilla/5.0 (iPhone; U; CPU iPhone OS) (compatible; Googlebot-Mobile/2.1; http://www.google.com/bot.html)",
         "str": "Spider / Other / Mobile Safari"
+    },
+    "windows_ce": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": true,
+        "ua_string": "SAMSUNG-SGH-I617/UCHJ1 Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 7.11)",
+        "str": "Samsung SGH-I617 / Windows CE / IE Mobile 7.11"
+    },
+    "windows_mobile": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 8.12; MSIEMobile 6.0) 320x240; VZW; UTStar-XV6175.1; Windows Mobile 6.5 Standard;",
+        "str": "Other / Windows Mobile / IE Mobile 8.12"
+    },
+    "opera_mobile": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": true,
+        "is_touch_capable": true,
+        "ua_string": "Opera/9.80 (Android 2.3.3; Linux; Opera Mobi/ADR-1202011015; U; en) Presto/2.9.201 Version/11.50",
+        "str": "Opera / Android 2.3.3 / Opera Mobile 11.50"
+    },
+    "opera_mini": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": false,
+        "ua_string": "Opera/9.80 (BREW; Opera Mini/5.0/27.2370; U; en) Presto/2.8.119 240X320 Samsung SCH-U380",
+        "str": "Opera / Android 2.3.3 / Opera Mobile 11.50"
     }
 }
 

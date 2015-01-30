@@ -26,6 +26,13 @@ MOBILE_OS_FAMILIES = (
     'Windows Phone OS',  # Earlier versions of ua-parser returns Windows Phone OS
     'Symbian OS',
     'Bada',
+    'Windows CE',
+    'Windows Mobile',
+)
+
+MOBILE_BROWSER_FAMILIES = (
+    'Opera Mobile',
+    'Opera Mini',
 )
 
 TABLET_DEVICE_FAMILIES = (
@@ -46,6 +53,8 @@ TOUCH_CAPABLE_OS_FAMILIES = (
     'Windows Phone',
     'Windows Phone OS',
     'Windows RT',
+    'Windows CE',
+    'Windows Mobile',
 )
 
 TOUCH_CAPABLE_DEVICE_FAMILIES = (
@@ -152,8 +161,10 @@ class UserAgent(object):
 
     @property
     def is_mobile(self):
-        # First check for mobile device families
+        # First check for mobile device and mobile browser families
         if self.device.family in MOBILE_DEVICE_FAMILIES:
+            return True
+        if self.browser.family in MOBILE_BROWSER_FAMILIES:
             return True
         # Device is considered Mobile OS is Android and not tablet
         # This is not fool proof but would have to suffice for now

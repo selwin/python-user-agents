@@ -165,3 +165,6 @@ Version 0.1.1
 Version 0.1
 -----------
 * Initial release
+
+
+Developed by the cool guys at `Stamps (http://stamps.co.id) <http://stamps.co.id>`_.

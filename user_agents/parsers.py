@@ -1,16 +1,7 @@
-import sys
 from collections import namedtuple
 
 from ua_parser import user_agent_parser
-
-
-PY2 = sys.version_info[0] == 2
-PY3 = sys.version_info[0] == 3
-
-if PY3:
-    string_types = str
-else:
-    string_types = basestring
+from .compat import string_types
 
 
 MOBILE_DEVICE_FAMILIES = (
@@ -70,6 +61,11 @@ TOUCH_CAPABLE_DEVICE_FAMILIES = (
     'Kindle Fire',
 )
 
+def verify_attribute(attribute):
+    if isinstance(attribute, string_types) and attribute.isdigit():
+        return int(attribute)
+
+    return attribute
 
 def parse_version(major=None, minor=None, patch=None, patch_minor=None):
     # Returns version number tuple, attributes will be integer if they're numbers

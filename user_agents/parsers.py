@@ -61,6 +61,11 @@ TOUCH_CAPABLE_DEVICE_FAMILIES = (
     'Kindle Fire',
 )
 
+def verify_attribute(attribute):
+    if isinstance(attribute, string_types) and attribute.isdigit():
+        return int(attribute)
+
+    return attribute
 
 def parse_version(major=None, minor=None, patch=None, patch_minor=None):
     # Returns version number tuple, attributes will be integer if they're numbers

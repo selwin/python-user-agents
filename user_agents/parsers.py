@@ -76,7 +76,7 @@ def parse_version(major=None, minor=None, patch=None, patch_minor=None):
     patch = verify_attribute(patch)
     patch_minor = verify_attribute(patch_minor)
 
-    return filter(None, (major, minor, patch, patch_minor))
+    return tuple(filter(None, (major, minor, patch, patch_minor)))
 
 
 Browser = namedtuple('Browser', ['family', 'version', 'version_string'])

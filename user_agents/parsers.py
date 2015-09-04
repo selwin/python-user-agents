@@ -90,11 +90,11 @@ def parse_operating_system(family, major=None, minor=None, patch=None, patch_min
     return OperatingSystem(family, version, version_string)
 
 
-Device = namedtuple('Device', ['family'])
+Device = namedtuple('Device', ['family', 'brand', 'model'])
 
 
-def parse_device(family):
-    return Device(family)
+def parse_device(family, brand, model):
+    return Device(family, brand, model)
 
 
 class UserAgent(object):

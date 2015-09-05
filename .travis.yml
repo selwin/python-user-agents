@@ -6,6 +6,7 @@ python:
 install:
   - "python setup.py install"
   - "pip install -U pip"
+  - "pip uninstall ua-parser"
   - "pip install pyyaml ua-parser"
 script:
   - python -m unittest discover

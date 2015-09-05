@@ -138,6 +138,10 @@ Running Tests
 Changelog
 =========
 
+Version 1.0.0
+-------------
+* Fixes packaging issue
+
 Version 1.0
 -----------
 * Adds compatibility with ``ua-parser`` 0.4.0

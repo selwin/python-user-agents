@@ -16,7 +16,6 @@ Installation
 
 .. image:: https://secure.travis-ci.org/selwin/python-user-agents.png
 
-WARNING: This library should be considered "alpha". Use this in production at your own risk. 
 ``user-agents`` is hosted on `PyPI <http://pypi.python.org/pypi/user-agents/>`_ and can be installed as such::
 
     pip install pyyaml ua-parser user-agents
@@ -144,6 +143,16 @@ Version 1.0
 * Adds compatibility with ``ua-parser`` 0.4.0
 * Access to more device information in ``user_agent.device.brand`` and ``user_agent.device.model``
 
+=======
+Version 0.3.2
+-------------
+* Better mobile detection
+* Better PC detection
+
+Version 0.3.1
+-------------
+* user_agent.is_mobile returns True when mobile spider is detected
+
 Version 0.3.0
 -------------
 * Added __str__/__unicode__ methods for convenience of pretty string
@@ -161,3 +170,6 @@ Version 0.1.1
 Version 0.1
 -----------
 * Initial release
+
+
+Developed by the cool guys at `Stamps (http://stamps.co.id) <http://stamps.co.id>`_.

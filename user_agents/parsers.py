@@ -18,20 +18,40 @@ MOBILE_DEVICE_FAMILIES = (
     'iPod',
     'Generic Smartphone',
     'Generic Feature Phone',
+    'PlayStation Vita',
+)
+
+PC_OS_FAMILIES = (
+    'Windows 95',
+    'Windows 98',
+    'Windows ME',
+    'Solaris',
 )
 
 MOBILE_OS_FAMILIES = (
     'Windows Phone',
-    'Windows Phone OS', # Earlier versions of ua-parser returns Windows Phone OS
+    'Windows Phone OS',  # Earlier versions of ua-parser returns Windows Phone OS
     'Symbian OS',
+    'Bada',
+    'Windows CE',
+    'Windows Mobile',
+)
+
+MOBILE_BROWSER_FAMILIES = (
+    'Opera Mobile',
+    'Opera Mini',
 )
 
 TABLET_DEVICE_FAMILIES = (
     'iPad',
     'BlackBerry Playbook',
-    'Blackberry Playbook', # Earlier versions of ua-parser returns "Blackberry" instead of "BlackBerry"
+    'Blackberry Playbook',  # Earlier versions of ua-parser returns "Blackberry" instead of "BlackBerry"
     'Kindle',
     'Kindle Fire',
+    'Kindle Fire HD',
+    'Galaxy Tab',
+    'Xoom',
+    'Dell Streak',
 )
 
 TOUCH_CAPABLE_OS_FAMILIES = (
@@ -40,6 +60,8 @@ TOUCH_CAPABLE_OS_FAMILIES = (
     'Windows Phone',
     'Windows Phone OS',
     'Windows RT',
+    'Windows CE',
+    'Windows Mobile',
 )
 
 TOUCH_CAPABLE_DEVICE_FAMILIES = (
@@ -121,8 +143,6 @@ class UserAgent(object):
         if ('Mobile Safari' not in self.ua_string and
                 self.browser.family != "Firefox Mobile"):
             return True
-        if 'SCH-' in self.ua_string:
-            return True
         return False
 
     def _is_blackberry_touch_capable_device(self):
@@ -130,9 +150,9 @@ class UserAgent(object):
         # Blackberry Bold Touch series begins with 99XX
         if 'Blackberry 99' in self.device.family:
             return True
-        if 'Blackberry 95' in self.device.family: # BB Storm devices
+        if 'Blackberry 95' in self.device.family:  # BB Storm devices
             return True
-        if 'Blackberry 95' in self.device.family: # BB Torch devices
+        if 'Blackberry 95' in self.device.family:  # BB Torch devices
             return True
         return False
 
@@ -142,14 +162,16 @@ class UserAgent(object):
             return True
         if (self.os.family == 'Android' and self._is_android_tablet()):
             return True
-        if self.os.family == 'Windows RT':
+        if self.os.family.startswith('Windows RT'):
             return True
         return False
 
     @property
     def is_mobile(self):
-        # First check for mobile device families
+        # First check for mobile device and mobile browser families
         if self.device.family in MOBILE_DEVICE_FAMILIES:
+            return True
+        if self.browser.family in MOBILE_BROWSER_FAMILIES:
             return True
         # Device is considered Mobile OS is Android and not tablet
         # This is not fool proof but would have to suffice for now
@@ -162,6 +184,12 @@ class UserAgent(object):
         # TODO: remove after https://github.com/tobie/ua-parser/issues/126 is closed
         if 'J2ME' in self.ua_string or 'MIDP' in self.ua_string:
             return True
+        # This is here mainly to detect Google's Mobile Spider
+        if 'iPhone;' in self.ua_string:
+            return True
+        # Mobile Spiders should be identified as mobile
+        if self.device.family == 'Spider' and 'Mobile' in self.browser.family:
+            return True
         return False
 
     @property
@@ -171,7 +199,7 @@ class UserAgent(object):
             return True
         if self.device.family in TOUCH_CAPABLE_DEVICE_FAMILIES:
             return True
-        if self.os.family == 'Windows 8' and 'Touch' in self.ua_string:
+        if self.os.family.startswith('Windows 8') and 'Touch' in self.ua_string:
             return True
         if 'BlackBerry' in self.os.family and self._is_blackberry_touch_capable_device():
             return True
@@ -180,7 +208,7 @@ class UserAgent(object):
     @property
     def is_pc(self):
         # Returns True for "PC" devices (Windows, Mac and Linux)
-        if 'Windows NT' in self.ua_string:
+        if 'Windows NT' in self.ua_string or self.os.family in PC_OS_FAMILIES:
             return True
         # TODO: remove after https://github.com/tobie/ua-parser/issues/127 is closed
         if self.os.family == 'Mac OS X' and 'Silk' not in self.ua_string:

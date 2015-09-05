@@ -7,6 +7,6 @@ install:
   - "python setup.py install"
   - "pip install -U pip"
   - "pip uninstall ua-parser --yes"
-  - "pip install pyyaml ua-parser"
+  - "pip install pyyaml ua-parser --no-use-wheel"
 script:
   - python -m unittest discover

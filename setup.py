@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name='user-agents',
@@ -13,7 +13,7 @@ setup(
     long_description=open('README.rst').read(),
     zip_safe=False,
     include_package_data=True,
-    package_data = { '': ['README.rst'] },
+    package_data={'': ['README.rst']},
     install_requires=['ua-parser'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

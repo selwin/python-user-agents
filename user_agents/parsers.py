@@ -62,6 +62,7 @@ TOUCH_CAPABLE_OS_FAMILIES = (
     'Windows RT',
     'Windows CE',
     'Windows Mobile',
+    'Firefox OS',
 )
 
 TOUCH_CAPABLE_DEVICE_FAMILIES = (

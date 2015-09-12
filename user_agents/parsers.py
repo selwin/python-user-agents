@@ -62,6 +62,7 @@ TOUCH_CAPABLE_OS_FAMILIES = (
     'Windows RT',
     'Windows CE',
     'Windows Mobile',
+    'Firefox OS',
 )
 
 TOUCH_CAPABLE_DEVICE_FAMILIES = (
@@ -164,6 +165,8 @@ class UserAgent(object):
             return True
         if self.os.family.startswith('Windows RT'):
             return True
+        if self.os.family == 'Firefox OS' and 'Mobile' not in self.browser.family:
+            return True
         return False
 
     @property
@@ -175,7 +178,8 @@ class UserAgent(object):
             return True
         # Device is considered Mobile OS is Android and not tablet
         # This is not fool proof but would have to suffice for now
-        if self.os.family == 'Android' and not self.is_tablet:
+        if ((self.os.family == 'Android' or self.os.family == 'Firefox OS')
+            and not self.is_tablet):
             return True
         if self.os.family == 'BlackBerry OS' and self.device.family != 'Blackberry Playbook':
             return True

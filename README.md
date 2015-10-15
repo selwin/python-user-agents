@@ -12,9 +12,9 @@ actual parsing of the raw user agent string.
 
 ## Installation
 
-![Image](https://secure.travis-ci.org/selwin/python-user-agents.png)
+![Build status](https://secure.travis-ci.org/selwin/python-user-agents.png)
 
-``user-agents`` is hosted on `PyPI <http://pypi.python.org/pypi/user-agents/>`_ and can be installed as such::
+``user-agents`` is hosted on [PyPI](http://pypi.python.org/pypi/user-agents/) and can be installed as such:
 
     pip install pyyaml ua-parser user-agents
 
@@ -172,4 +172,4 @@ str(user_agent) # returns "PC / Windows 8 / IE 10"
 * Initial release
 
 
-Developed by the cool guys at `Stamps (http://stamps.co.id) <http://stamps.co.id>`_.
+Developed by the cool guys at [Stamps](http://stamps.co.id).

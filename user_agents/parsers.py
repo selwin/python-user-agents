@@ -18,6 +18,7 @@ MOBILE_DEVICE_FAMILIES = (
     'iPod',
     'Generic Smartphone',
     'Generic Feature Phone',
+    'Nokia N9',
     'PlayStation Vita',
 )
 

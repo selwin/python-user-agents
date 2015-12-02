@@ -268,6 +268,15 @@
         "ua_string": "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
         "str": "Spider / Other / Mobile Safari"
     },
+    "googlebot_mobile_3": {
+        "is_bot": true,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": false,
+        "ua_string": "DoCoMo/2.0 N905i(c100;TB;W24H16) (compatible; Googlebot-Mobile/2.1; +http://www.google.com/bot.html)",
+        "str": "Spider / Other / Other"
+    },
     "windows_ce": {
         "is_bot": false,
         "is_mobile": true,

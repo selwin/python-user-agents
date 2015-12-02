@@ -191,6 +191,8 @@ class UserAgent(object):
         # This is here mainly to detect Google's Mobile Spider
         if 'iPhone;' in self.ua_string:
             return True
+        if 'Googlebot-Mobile' in self.ua_string:
+            return True
         # Mobile Spiders should be identified as mobile
         if self.device.family == 'Spider' and 'Mobile' in self.browser.family:
             return True

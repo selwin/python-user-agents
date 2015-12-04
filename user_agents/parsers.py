@@ -18,7 +18,6 @@ MOBILE_DEVICE_FAMILIES = (
     'iPod',
     'Generic Smartphone',
     'Generic Feature Phone',
-    'Nokia N9',
     'PlayStation Vita',
 )
 
@@ -36,6 +35,7 @@ MOBILE_OS_FAMILIES = (
     'Bada',
     'Windows CE',
     'Windows Mobile',
+    'Maemo',
 )
 
 MOBILE_BROWSER_FAMILIES = (
@@ -64,6 +64,7 @@ TOUCH_CAPABLE_OS_FAMILIES = (
     'Windows CE',
     'Windows Mobile',
     'Firefox OS',
+    'MeeGo',
 )
 
 TOUCH_CAPABLE_DEVICE_FAMILIES = (
@@ -195,6 +196,9 @@ class UserAgent(object):
         # Mobile Spiders should be identified as mobile
         if self.device.family == 'Spider' and 'Mobile' in self.browser.family:
             return True
+        # Nokia mobile
+        if 'NokiaBrowser' in self.ua_string and 'Mobile' in self.ua_string:
+            return True
         return False
 
     @property
@@ -218,6 +222,9 @@ class UserAgent(object):
         # TODO: remove after https://github.com/tobie/ua-parser/issues/127 is closed
         if self.os.family == 'Mac OS X' and 'Silk' not in self.ua_string:
             return True
+        # Maemo has 'Linux' and 'X11' in UA, but it is not for PC
+        if 'Maemo' in self.ua_string:
+            return False
         if 'Linux' in self.ua_string and 'X11' in self.ua_string:
             return True
         return False

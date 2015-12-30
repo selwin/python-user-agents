@@ -165,7 +165,7 @@ class UserAgent(object):
             return True
         if self.os.family.startswith('Windows RT'):
             return True
-        if self.os.family == 'Firefox OS' and 'Presto' not in self.browser.family:
+        if self.os.family == 'Firefox OS' and 'Mobile' not in self.browser.family:
             return True
         return False
 

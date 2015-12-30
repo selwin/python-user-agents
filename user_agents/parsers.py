@@ -142,7 +142,8 @@ class UserAgent(object):
         # Newer Android tablets don't have "Mobile" in their user agent string,
         # older ones like Galaxy Tab still have "Mobile" though they're not
         if ('Mobile Safari' not in self.ua_string and
-                self.browser.family != "Firefox Mobile"):
+                self.browser.family != "Firefox Mobile"
+                and self.browser.family != "Opera Mini"):
             return True
         return False
 

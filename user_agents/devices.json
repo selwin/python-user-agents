@@ -143,6 +143,15 @@
         "ua_string": "Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19",
         "str": "Nexus 7 / Android 4.1.1 / Chrome 18.0.1025"
     },
+    "nokia_n9": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (MeeGo; NokiaN9) AppleWebKit/534.13 (KHTML, like Gecko) NokiaBrowser/8.5.0 Mobile Safari/534.13",
+        "str": "Nokia N9 / MeeGo / Nokia Browser 8.5.0"
+    },
     "nokia_n97": {
         "is_bot": false,
         "is_mobile": true,
@@ -151,6 +160,15 @@
         "is_touch_capable": false,
         "ua_string": "Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaN97-1/12.0.024; Profile/MIDP-2.1 Configuration/CLDC-1.1; en-us) AppleWebKit/525 (KHTML, like Gecko) BrowserNG/7.1.12344",
         "str": "Nokia N97 / Symbian OS 9.4 / Nokia Browser 7.1.12344"
+    },
+    "nokia_n900": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": false,
+        "ua_string": "Mozilla/5.0 (X11; U; Linux armv7l; no-NO; rv:1.9.2.3pre) Gecko/20100723 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900",
+        "str": "Nokia N900 / Maemo / Maemo Browser 1.7.4"
     },
     "playbook": {
         "is_bot": false,

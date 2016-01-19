@@ -8,6 +8,7 @@ from .parsers import parse
 
 
 iphone_ua_string = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B179 Safari/7534.48.3'
+new_iphone_ua_string = 'Mozilla/5.0 (iPhone6,2; CPU iPhone6,2 OS 9.2 like Mac OS X) NetType/WIFI Language/zh-Hans-CN'
 ipad_ua_string = 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10'
 galaxy_tab_ua_string = 'Mozilla/5.0 (Linux; U; Android 2.2; en-us; SCH-I800 Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1'
 galaxy_s3_ua_string = 'Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; GT-I9300 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
@@ -30,6 +31,7 @@ nokia_n97_ua_string = 'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaN97-1/12.0.
 android_firefox_aurora_ua_string = 'Mozilla/5.0 (Android; Mobile; rv:27.0) Gecko/27.0 Firefox/27.0'
 
 iphone_ua = parse(iphone_ua_string)
+new_iphone_ua = parse(new_iphone_ua_string)
 ipad_ua = parse(ipad_ua_string)
 galaxy_tab = parse(galaxy_tab_ua_string)
 galaxy_s3_ua = parse(galaxy_s3_ua_string)
@@ -80,6 +82,7 @@ class UserAgentsTest(unittest.TestCase):
 
     def test_is_tablet_property(self):
         self.assertFalse(iphone_ua.is_tablet)
+        self.assertFalse(new_iphone_ua.is_tablet)
         self.assertFalse(galaxy_s3_ua.is_tablet)
         self.assertFalse(blackberry_torch_ua.is_tablet)
         self.assertFalse(blackberry_bold_ua.is_tablet)
@@ -101,6 +104,7 @@ class UserAgentsTest(unittest.TestCase):
 
     def test_is_mobile_property(self):
         self.assertTrue(iphone_ua.is_mobile)
+        self.assertTrue(new_iphone_ua.is_mobile)
         self.assertTrue(galaxy_s3_ua.is_mobile)
         self.assertTrue(blackberry_torch_ua.is_mobile)
         self.assertTrue(blackberry_bold_ua.is_mobile)
@@ -122,6 +126,7 @@ class UserAgentsTest(unittest.TestCase):
 
     def test_is_touch_property(self):
         self.assertTrue(iphone_ua.is_touch_capable)
+        self.assertTrue(new_iphone_ua.is_touch_capable)
         self.assertTrue(galaxy_s3_ua.is_touch_capable)
         self.assertTrue(ipad_ua.is_touch_capable)
         self.assertTrue(playbook_ua.is_touch_capable)
@@ -143,6 +148,7 @@ class UserAgentsTest(unittest.TestCase):
 
     def test_is_pc(self):
         self.assertFalse(iphone_ua.is_pc)
+        self.assertFalse(new_iphone_ua.is_pc)
         self.assertFalse(galaxy_s3_ua.is_pc)
         self.assertFalse(ipad_ua.is_pc)
         self.assertFalse(playbook_ua.is_pc)
@@ -165,6 +171,7 @@ class UserAgentsTest(unittest.TestCase):
     def test_is_bot(self):
         self.assertTrue(google_bot_ua.is_bot)
         self.assertFalse(iphone_ua.is_bot)
+        self.assertFalse(new_iphone_ua.is_bot)
         self.assertFalse(galaxy_s3_ua.is_bot)
         self.assertFalse(ipad_ua.is_bot)
         self.assertFalse(playbook_ua.is_bot)
@@ -185,6 +192,7 @@ class UserAgentsTest(unittest.TestCase):
 
     def test_strings(self):
         self.assertEqual(str(iphone_ua), "iPhone / iOS 5.1 / Mobile Safari 5.1")
+        self.assertEqual(str(new_iphone_ua), "iPhone / iOS 9.2 / Mobile Safari")
         self.assertEqual(str(ipad_ua), "iPad / iOS 3.2 / Mobile Safari 4.0.4")
         self.assertEqual(str(galaxy_tab), "Samsung SCH-I800 / Android 2.2 / Android 2.2")
         self.assertEqual(str(galaxy_s3_ua), "Samsung GT-I9300 / Android 4.0.4 / Android 4.0.4")

@@ -84,13 +84,13 @@ def parse_version(major=None, minor=None, patch=None, patch_minor=None):
         patch = int(patch) if patch.isdigit() else patch
     if patch_minor is not None and isinstance(patch_minor, string_types):
         patch_minor = int(patch_minor) if patch_minor.isdigit() else patch_minor
-    if patch_minor:
+    if patch_minor or patch_minor == 0:
         return (major, minor, patch, patch_minor)
-    elif patch:
+    elif patch or patch == 0:
         return (major, minor, patch)
-    elif minor:
+    elif minor or minor == 0:
         return (major, minor)
-    elif major:
+    elif major or major == 0:
         return (major,)
     else:
         return tuple()

@@ -83,7 +83,7 @@ user_agent.is_tablet # returns False
 user_agent.is_touch_capable # returns False
 user_agent.is_pc # returns False
 user_agent.is_bot # returns False
-str(user_agent) # returns "BlackBerry 9700 / BlackBerry OS 5 / BlackBerry 9700"
+str(user_agent) # returns "BlackBerry 9700 / BlackBerry OS 5.0.0 / BlackBerry 9700"
 
 # Now a Samsung Galaxy S3
 ua_string = 'Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; GT-I9300 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
@@ -123,7 +123,7 @@ user_agent.is_tablet # returns False
 user_agent.is_touch_capable # returns True
 user_agent.is_pc # returns True
 user_agent.is_bot # returns False
-str(user_agent) # returns "PC / Windows 8 / IE 10"
+str(user_agent) # returns "PC / Windows 8 / IE 10.0"
 ```
 
 ## Running Tests

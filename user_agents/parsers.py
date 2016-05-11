@@ -234,6 +234,11 @@ class UserAgent(object):
     @property
     def is_bot(self):
         return True if self.device.family == 'Spider' else False
+        
+    @property
+    def is_wechat(self):
+        import re
+        return True if re.match(r'.*MicroMessenger.*', self.ua_string) else False
 
 
 def parse(user_agent_string):

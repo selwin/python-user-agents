@@ -245,7 +245,7 @@ class UserAgent(object):
 
     @property
     def is_wechat(self):
-        if self.is_mobile and 'MicroMessenger' in self.ua_string:
+        if 'MicroMessenger' in self.ua_string:
             return True
         return False
 

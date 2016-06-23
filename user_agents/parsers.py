@@ -46,7 +46,9 @@ MOBILE_BROWSER_FAMILIES = (
 TABLET_DEVICE_FAMILIES = (
     'iPad',
     'BlackBerry Playbook',
-    'Blackberry Playbook',  # Earlier versions of ua-parser returns "Blackberry" instead of "BlackBerry"
+    # Earlier versions of ua-parser returns "Blackberry" instead of
+    # "BlackBerry"
+    'Blackberry Playbook',
     'Kindle',
     'Kindle Fire',
     'Kindle Fire HD',
@@ -75,7 +77,8 @@ TOUCH_CAPABLE_DEVICE_FAMILIES = (
 
 
 def parse_version(major=None, minor=None, patch=None, patch_minor=None):
-    # Returns version number tuple, attributes will be integer if they're numbers
+    # Returns version number tuple, attributes will be integer if they're
+    # numbers
     if major is not None and isinstance(major, string_types):
         major = int(major) if major.isdigit() else major
     if minor is not None and isinstance(minor, string_types):
@@ -83,7 +86,8 @@ def parse_version(major=None, minor=None, patch=None, patch_minor=None):
     if patch is not None and isinstance(patch, string_types):
         patch = int(patch) if patch.isdigit() else patch
     if patch_minor is not None and isinstance(patch_minor, string_types):
-        patch_minor = int(patch_minor) if patch_minor.isdigit() else patch_minor
+        patch_minor = int(
+            patch_minor) if patch_minor.isdigit() else patch_minor
     if patch_minor:
         return (major, minor, patch, patch_minor)
     elif patch:
@@ -106,7 +110,8 @@ def parse_browser(family, major=None, minor=None, patch=None, patch_minor=None):
     return Browser(family, version, version_string)
 
 
-OperatingSystem = namedtuple('OperatingSystem', ['family', 'version', 'version_string'])
+OperatingSystem = namedtuple(
+    'OperatingSystem', ['family', 'version', 'version_string'])
 
 
 def parse_operating_system(family, major=None, minor=None, patch=None, patch_minor=None):
@@ -134,7 +139,8 @@ class UserAgent(object):
     def __str__(self):
         device = self.is_pc and "PC" or self.device.family
         os = ("%s %s" % (self.os.family, self.os.version_string)).strip()
-        browser = ("%s %s" % (self.browser.family, self.browser.version_string)).strip()
+        browser = ("%s %s" % (self.browser.family,
+                              self.browser.version_string)).strip()
         return " / ".join([device, os, browser])
 
     def __unicode__(self):
@@ -181,13 +187,14 @@ class UserAgent(object):
         # Device is considered Mobile OS is Android and not tablet
         # This is not fool proof but would have to suffice for now
         if ((self.os.family == 'Android' or self.os.family == 'Firefox OS')
-            and not self.is_tablet):
+                and not self.is_tablet):
             return True
         if self.os.family == 'BlackBerry OS' and self.device.family != 'Blackberry Playbook':
             return True
         if self.os.family in MOBILE_OS_FAMILIES:
             return True
-        # TODO: remove after https://github.com/tobie/ua-parser/issues/126 is closed
+        # TODO: remove after https://github.com/tobie/ua-parser/issues/126 is
+        # closed
         if 'J2ME' in self.ua_string or 'MIDP' in self.ua_string:
             return True
         # This is here mainly to detect Google's Mobile Spider
@@ -221,7 +228,8 @@ class UserAgent(object):
         # Returns True for "PC" devices (Windows, Mac and Linux)
         if 'Windows NT' in self.ua_string or self.os.family in PC_OS_FAMILIES:
             return True
-        # TODO: remove after https://github.com/tobie/ua-parser/issues/127 is closed
+        # TODO: remove after https://github.com/tobie/ua-parser/issues/127 is
+        # closed
         if self.os.family == 'Mac OS X' and 'Silk' not in self.ua_string:
             return True
         # Maemo has 'Linux' and 'X11' in UA, but it is not for PC
@@ -234,6 +242,12 @@ class UserAgent(object):
     @property
     def is_bot(self):
         return True if self.device.family == 'Spider' else False
+
+    @property
+    def is_wechat(self):
+        if 'MicroMessenger' in self.ua_string:
+            return True
+        return False
 
 
 def parse(user_agent_string):

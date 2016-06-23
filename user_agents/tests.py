@@ -28,6 +28,9 @@ ubuntu_firefox_ua_string = 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko
 google_bot_ua_string = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
 nokia_n97_ua_string = 'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaN97-1/12.0.024; Profile/MIDP-2.1 Configuration/CLDC-1.1; en-us) AppleWebKit/525 (KHTML, like Gecko) BrowserNG/7.1.12344'
 android_firefox_aurora_ua_string = 'Mozilla/5.0 (Android; Mobile; rv:27.0) Gecko/27.0 Firefox/27.0'
+wechat_iphone_ua_string = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.32 (KHTML, like Gecko) Mobile/14A5261v MicroMessenger/6.3.21 NetType/WIFI Language/zh_CN"
+wechat_android_ua_string = "Mozilla/5.0 (Linux; Android 4.4.4; MI 3C Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile MQQBrowser/6.2 TBS/036523 Safari/537.36 MicroMessenger/6.3.18.800 NetType/WIFI Language/zh_CN"
+
 
 iphone_ua = parse(iphone_ua_string)
 ipad_ua = parse(ipad_ua_string)
@@ -50,6 +53,8 @@ ubuntu_firefox_ua = parse(ubuntu_firefox_ua_string)
 google_bot_ua = parse(google_bot_ua_string)
 nokia_n97_ua = parse(nokia_n97_ua_string)
 android_firefox_aurora_ua = parse(android_firefox_aurora_ua_string)
+wechat_iphone_ua = parse(wechat_iphone_ua_string)
+wechat_android_ua = parse(wechat_android_ua_string)
 
 
 class UserAgentsTest(unittest.TestCase):
@@ -183,6 +188,10 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(nokia_n97_ua.is_bot)
         self.assertFalse(android_firefox_aurora_ua.is_bot)
 
+    def test_is_wechat(self):
+        self.assertTrue(wechat_iphone_ua.is_wechat)
+        self.assertTrue(wechat_android_ua.is_wechat)
+
     def test_strings(self):
         self.assertEqual(str(iphone_ua), "iPhone / iOS 5.1 / Mobile Safari 5.1")
         self.assertEqual(str(ipad_ua), "iPad / iOS 3.2 / Mobile Safari 4.0.4")
@@ -205,6 +214,9 @@ class UserAgentsTest(unittest.TestCase):
         self.assertEqual(str(google_bot_ua), "Spider / Other / Googlebot 2.1")
         self.assertEqual(str(nokia_n97_ua), "Nokia N97 / Symbian OS 9.4 / Nokia Browser 7.1.12344")
         self.assertEqual(str(android_firefox_aurora_ua), "Generic Smartphone / Android / Firefox Mobile 27")
+        self.assertEqual(str(wechat_iphone_ua), "iPhone / iOS 10 / Mobile Safari UI/WKWebView 10")
+        self.assertEqual(str(wechat_android_ua), "XiaoMi MI 3C / Android 4.4.4 / Chrome Mobile 37")
+
 
     def test_unicode_strings(self):
         try:

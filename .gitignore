@@ -5,4 +5,4 @@ dist
 cabal-dev
 *.pyc
 build/
-py/ua_parser.egg-info/
+*.egg-info

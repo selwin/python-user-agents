@@ -10,10 +10,10 @@ setup(
     url='https://github.com/selwin/python-user-agents',
     license='MIT',
     description='A library to identify devices (phones, tablets) and their capabilities by parsing (browser/HTTP) user agent strings',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     zip_safe=False,
     include_package_data=True,
-    package_data={'': ['README.md']},
+    package_data={'': ['README.rst']},
     install_requires=['ua-parser>=0.4.1'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

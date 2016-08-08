@@ -64,6 +64,24 @@ TOUCH_CAPABLE_DEVICE_FAMILIES = (
     'Kindle Fire',
 )
 
+EMAIL_PROGRAM_FAMILIES = {
+    'Outlook',
+    'Windows Live Mail',
+    'AirMail',
+    'Apple Mail',
+    'Outlook',
+    'Thunderbird',
+    'Lightning',
+    'ThunderBrowse',
+    'Windows Live Mail',
+    'The Bat!',
+    'Lotus Notes',
+    'IBM Notes',
+    'Barca',
+    'MailBar',
+    'kmail2',
+    'YahooMobileMail'
+}
 
 def verify_attribute(attribute):
     if isinstance(attribute, string_types) and attribute.isdigit():
@@ -221,6 +239,11 @@ class UserAgent(object):
     def is_bot(self):
         return True if self.device.family == 'Spider' else False
 
+    @property
+    def is_email_client(self):
+        if self.browser.family in EMAIL_PROGRAM_FAMILIES:
+            return True
+        return False
 
 def parse(user_agent_string):
     return UserAgent(user_agent_string)

@@ -1,16 +1,7 @@
-import sys
 from collections import namedtuple
 
 from ua_parser import user_agent_parser
-
-
-PY2 = sys.version_info[0] == 2
-PY3 = sys.version_info[0] == 3
-
-if PY3:
-    string_types = str
-else:
-    string_types = basestring
+from .compat import string_types
 
 
 MOBILE_DEVICE_FAMILIES = (
@@ -74,26 +65,21 @@ TOUCH_CAPABLE_DEVICE_FAMILIES = (
 )
 
 
+def verify_attribute(attribute):
+    if isinstance(attribute, string_types) and attribute.isdigit():
+        return int(attribute)
+
+    return attribute
+
+
 def parse_version(major=None, minor=None, patch=None, patch_minor=None):
     # Returns version number tuple, attributes will be integer if they're numbers
-    if major is not None and isinstance(major, string_types):
-        major = int(major) if major.isdigit() else major
-    if minor is not None and isinstance(minor, string_types):
-        minor = int(minor) if minor.isdigit() else minor
-    if patch is not None and isinstance(patch, string_types):
-        patch = int(patch) if patch.isdigit() else patch
-    if patch_minor is not None and isinstance(patch_minor, string_types):
-        patch_minor = int(patch_minor) if patch_minor.isdigit() else patch_minor
-    if patch_minor:
-        return (major, minor, patch, patch_minor)
-    elif patch:
-        return (major, minor, patch)
-    elif minor:
-        return (major, minor)
-    elif major:
-        return (major,)
-    else:
-        return tuple()
+    major = verify_attribute(major)
+    minor = verify_attribute(minor)
+    patch = verify_attribute(patch)
+    patch_minor = verify_attribute(patch_minor)
+
+    return tuple(filter(None, (major, minor, patch, patch_minor)))
 
 
 Browser = namedtuple('Browser', ['family', 'version', 'version_string'])

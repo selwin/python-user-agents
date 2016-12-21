@@ -30,6 +30,7 @@ nokia_n97_ua_string = 'Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 NokiaN97-1/12.0.
 android_firefox_aurora_ua_string = 'Mozilla/5.0 (Android; Mobile; rv:27.0) Gecko/27.0 Firefox/27.0'
 thunderbird_ua_string = 'Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Thunderbird/38.2.0 Lightning/4.0.2'
 outlook_usa_string = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/6.0; Microsoft Outlook 15.0.4420)'
+chromebook_ua_string = 'Mozilla/5.0 (X11; CrOS i686 0.12.433) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.77 Safari/534.30'
 
 iphone_ua = parse(iphone_ua_string)
 ipad_ua = parse(ipad_ua_string)
@@ -54,6 +55,7 @@ nokia_n97_ua = parse(nokia_n97_ua_string)
 android_firefox_aurora_ua = parse(android_firefox_aurora_ua_string)
 thunderbird_ua = parse(thunderbird_ua_string)
 outlook_ua = parse(outlook_usa_string)
+chromebook_ua = parse(chromebook_ua_string)
 
 
 class UserAgentsTest(unittest.TestCase):
@@ -165,6 +167,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertTrue(ie_touch_ua.is_pc)
         self.assertTrue(ie_ua.is_pc)
         self.assertFalse(android_firefox_aurora_ua.is_pc)
+        self.assertTrue(chromebook_ua.is_pc)
 
     def test_is_bot(self):
         self.assertTrue(google_bot_ua.is_bot)

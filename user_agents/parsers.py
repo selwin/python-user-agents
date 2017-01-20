@@ -10,6 +10,7 @@ MOBILE_DEVICE_FAMILIES = (
     'Generic Smartphone',
     'Generic Feature Phone',
     'PlayStation Vita',
+    'iOS-Device'
 )
 
 PC_OS_FAMILIES = (

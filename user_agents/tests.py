@@ -204,9 +204,9 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(ie_touch_ua.is_email_client)
         self.assertFalse(ie_ua.is_email_client)
         self.assertFalse(nokia_n97_ua.is_email_client)
-        self.assertFalse(android_firefox_aurora_ua.is_email_client)		
-		
-		
+        self.assertFalse(android_firefox_aurora_ua.is_email_client)
+
+
     def test_strings(self):
         self.assertEqual(str(iphone_ua), "iPhone / iOS 5.1 / Mobile Safari 5.1")
         self.assertEqual(str(ipad_ua), "iPad / iOS 3.2 / Mobile Safari 4.0.4")
@@ -215,20 +215,20 @@ class UserAgentsTest(unittest.TestCase):
         self.assertEqual(str(kindle_fire_ua), "Kindle / Android / Amazon Silk 1.1.0-80")
         self.assertEqual(str(playbook_ua), "BlackBerry Playbook / BlackBerry Tablet OS 2.0.1 / BlackBerry WebKit 2.0.1")
         self.assertEqual(str(nexus_7_ua), "Asus Nexus 7 / Android 4.1.1 / Chrome 18.0.1025")
-        self.assertEqual(str(windows_phone_ua), "Samsung SGH-i917 / Windows Phone 7.5 / IE Mobile 9")
-        self.assertEqual(str(windows_rt_ua), "PC / Windows RT / IE 10")
-        self.assertEqual(str(blackberry_torch_ua), "BlackBerry 9800 / BlackBerry OS 6 / BlackBerry WebKit 6")
-        self.assertEqual(str(blackberry_bold_ua), "BlackBerry 9700 / BlackBerry OS 5 / BlackBerry 9700")
-        self.assertEqual(str(blackberry_bold_touch_ua), "BlackBerry 9930 / BlackBerry OS 7 / BlackBerry WebKit 7")
+        self.assertEqual(str(windows_phone_ua), "Samsung SGH-i917 / Windows Phone 7.5 / IE Mobile 9.0")
+        self.assertEqual(str(windows_rt_ua), "PC / Windows RT / IE 10.0")
+        self.assertEqual(str(blackberry_torch_ua), "BlackBerry 9800 / BlackBerry OS 6.0.0 / BlackBerry WebKit 6.0.0")
+        self.assertEqual(str(blackberry_bold_ua), "BlackBerry 9700 / BlackBerry OS 5.0.0 / BlackBerry 9700")
+        self.assertEqual(str(blackberry_bold_touch_ua), "BlackBerry 9930 / BlackBerry OS 7.0.0 / BlackBerry WebKit 7.0.0")
         self.assertEqual(str(j2me_opera_ua), "Generic Feature Phone / Other / Opera Mini 9.80")
-        self.assertEqual(str(ie_ua), "PC / Windows 8 / IE 10")
-        self.assertEqual(str(ie_touch_ua), "PC / Windows 8 / IE 10")
+        self.assertEqual(str(ie_ua), "PC / Windows 8 / IE 10.0")
+        self.assertEqual(str(ie_touch_ua), "PC / Windows 8 / IE 10.0")
         self.assertEqual(str(mac_safari_ua), "PC / Mac OS X 10.6.8 / WebKit Nightly 537.13")
-        self.assertEqual(str(windows_ie_ua), "PC / Windows 7 / IE 9")
+        self.assertEqual(str(windows_ie_ua), "PC / Windows 7 / IE 9.0")
         self.assertEqual(str(ubuntu_firefox_ua), "PC / Ubuntu / Firefox 15.0.1")
         self.assertEqual(str(google_bot_ua), "Spider / Other / Googlebot 2.1")
         self.assertEqual(str(nokia_n97_ua), "Nokia N97 / Symbian OS 9.4 / Nokia Browser 7.1.12344")
-        self.assertEqual(str(android_firefox_aurora_ua), "Generic Smartphone / Android / Firefox Mobile 27")
+        self.assertEqual(str(android_firefox_aurora_ua), "Generic Smartphone / Android / Firefox Mobile 27.0")
 
     def test_unicode_strings(self):
         try:

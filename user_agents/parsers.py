@@ -10,6 +10,7 @@ MOBILE_DEVICE_FAMILIES = (
     'Generic Smartphone',
     'Generic Feature Phone',
     'PlayStation Vita',
+    'iOS-Device'
 )
 
 PC_OS_FAMILIES = (
@@ -97,7 +98,9 @@ def parse_version(major=None, minor=None, patch=None, patch_minor=None):
     patch = verify_attribute(patch)
     patch_minor = verify_attribute(patch_minor)
 
-    return tuple(filter(None, (major, minor, patch, patch_minor)))
+    return tuple(
+        filter(lambda x: x is not None, (major, minor, patch, patch_minor))
+    )
 
 
 Browser = namedtuple('Browser', ['family', 'version', 'version_string'])

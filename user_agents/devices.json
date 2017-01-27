@@ -348,6 +348,14 @@
         "is_touch_capable": false,
         "ua_string": "Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.6) Gecko/20040503",
         "str": "Other / Solaris / Other"
+    },
+    "chrome_os": {
+        "is_bot": false,
+        "is_mobile": false,
+        "is_pc": true,
+        "is_tablet": false,
+        "is_touch_capable": false,
+        "ua_string": "Mozilla/5.0 (X11; CrOS i686 0.12.433) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.77 Safari/534.30",
+        "str": "CrOS"
     }
 }
-

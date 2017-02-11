@@ -234,6 +234,8 @@ class UserAgent(object):
         # Maemo has 'Linux' and 'X11' in UA, but it is not for PC
         if 'Maemo' in self.ua_string:
             return False
+        if 'Chrome OS' in self.os.family:
+            return True
         if 'Linux' in self.ua_string and 'X11' in self.ua_string:
             return True
         return False

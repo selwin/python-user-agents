@@ -151,6 +151,12 @@ Running Tests
 Changelog
 ---------
 
+Version 1.1.0
+~~~~~~~~~~~~~
+- Better FirefoxOS and ChromeBook detection
+- Fixes browser version number parsing.
+
+
 Version 1.0.0
 ~~~~~~~~~~~~~
 

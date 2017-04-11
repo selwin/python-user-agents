@@ -179,6 +179,13 @@ class UserAgent(object):
         return False
 
     @property
+    def is_opera_mini(self):
+        if self.browser.family == "Opera Mini":
+            return True
+        return False
+
+
+    @property
     def is_mobile(self):
         # First check for mobile device and mobile browser families
         if self.device.family in MOBILE_DEVICE_FAMILIES:

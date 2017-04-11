@@ -150,10 +150,10 @@ class UserAgent(object):
     def _is_android_tablet(self):
         # Newer Android tablets don't have "Mobile" in their user agent string,
         # older ones like Galaxy Tab still have "Mobile" though they're not
-        if ('Mobile Safari' not in self.ua_string and
-                self.browser.family != "Firefox Mobile"):
-            return True
-        return False
+        if ('Mobile Safari' in self.ua_string or
+            (self.browser.family == 'Firefox Mobile' and 'Tablet' not in self.ua_string)):
+            return False
+        return True
 
     def _is_blackberry_touch_capable_device(self):
         # A helper to determine whether a BB phone has touch capabilities
@@ -174,7 +174,7 @@ class UserAgent(object):
             return True
         if self.os.family.startswith('Windows RT'):
             return True
-        if self.os.family == 'Firefox OS' and 'Mobile' not in self.browser.family:
+        if self.os.family == 'Firefox OS' and 'Tablet;' in self.ua_string:
             return True
         return False
 

@@ -65,7 +65,7 @@ TOUCH_CAPABLE_DEVICE_FAMILIES = (
     'Kindle Fire',
 )
 
-EMAIL_PROGRAM_FAMILIES = {
+EMAIL_PROGRAM_FAMILIES = set((
     'Outlook',
     'Windows Live Mail',
     'AirMail',
@@ -82,7 +82,7 @@ EMAIL_PROGRAM_FAMILIES = {
     'MailBar',
     'kmail2',
     'YahooMobileMail'
-}
+))
 
 def verify_attribute(attribute):
     if isinstance(attribute, string_types) and attribute.isdigit():

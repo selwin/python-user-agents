@@ -20,6 +20,7 @@ Installation
    :alt: Build status
 
    Build status
+
 ``user-agents`` is hosted on
 `PyPI <http://pypi.python.org/pypi/user-agents/>`__ and can be installed
 as such:

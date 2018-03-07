@@ -10,7 +10,7 @@ to reliably detect whether:
 -  User agent has touch capabilities (has touch screen)
 
 ``user_agents`` relies on the excellent
-``ua-parser <https://github.com/tobie/ua-parser>``\ \_ to do the actual
+`ua-parser <https://github.com/tobie/ua-parser>`_ to do the actual
 parsing of the raw user agent string.
 
 Installation

@@ -10,7 +10,7 @@ to reliably detect whether:
 -  User agent has touch capabilities (has touch screen)
 
 ``user_agents`` relies on the excellent
-``ua-parser <https://github.com/tobie/ua-parser>``\ \_ to do the actual
+`ua-parser <https://github.com/tobie/ua-parser>`_ to do the actual
 parsing of the raw user agent string.
 
 Installation
@@ -30,7 +30,9 @@ as such:
     pip install pyyaml ua-parser user-agents
 
 Alternatively, you can also get the latest source code from
-``Github``\ \_ and install it manually.
+Github_ and install it manually.
+
+.. _Github: https://github.com/selwin/python-user-agents
 
 Usage
 -----

@@ -16,7 +16,6 @@ MOBILE_DEVICE_FAMILIES = (
 PC_OS_FAMILIES = (
     'Windows 95',
     'Windows 98',
-    'Windows ME',
     'Solaris',
 )
 
@@ -51,8 +50,6 @@ TOUCH_CAPABLE_OS_FAMILIES = (
     'iOS',
     'Android',
     'Windows Phone',
-    'Windows Phone OS',
-    'Windows RT',
     'Windows CE',
     'Windows Mobile',
     'Firefox OS',
@@ -172,7 +169,7 @@ class UserAgent(object):
             return True
         if (self.os.family == 'Android' and self._is_android_tablet()):
             return True
-        if self.os.family.startswith('Windows RT'):
+        if self.os.family == 'Windows' and self.os.version_string.startswith('RT'):
             return True
         if self.os.family == 'Firefox OS' and 'Mobile' not in self.browser.family:
             return True
@@ -217,8 +214,11 @@ class UserAgent(object):
             return True
         if self.device.family in TOUCH_CAPABLE_DEVICE_FAMILIES:
             return True
-        if self.os.family.startswith('Windows 8') and 'Touch' in self.ua_string:
-            return True
+        if self.os.family == 'Windows':
+            if self.os.version_string.startswith('RT'):
+                return True
+            if self.os.version_string.startswith('8') and 'Touch' in self.ua_string:
+                return True
         if 'BlackBerry' in self.os.family and self._is_blackberry_touch_capable_device():
             return True
         return False
@@ -226,7 +226,8 @@ class UserAgent(object):
     @property
     def is_pc(self):
         # Returns True for "PC" devices (Windows, Mac and Linux)
-        if 'Windows NT' in self.ua_string or self.os.family in PC_OS_FAMILIES:
+        if 'Windows NT' in self.ua_string or self.os.family in PC_OS_FAMILIES or \
+           self.os.family == 'Windows' and self.os.version_string == 'ME':
             return True
         # TODO: remove after https://github.com/tobie/ua-parser/issues/127 is closed
         if self.os.family == 'Mac OS X' and 'Silk' not in self.ua_string:

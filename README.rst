@@ -154,7 +154,12 @@ Running Tests
 Changelog
 ---------
 
-Version 1.0.0
+Version 2.0 (2019-04-07)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  ``python-user-agents`` now require ``ua-parser>=0.8.0``. Thanks @IMDagger!
+
+Version 1.1
 ~~~~~~~~~~~~~
 
 -  Fixes packaging issue
@@ -166,7 +171,6 @@ Version 1.0
 -  Access to more device information in ``user_agent.device.brand`` and
    ``user_agent.device.model``
 
-===
 
 Version 0.3.2
 ~~~~~~~~~~~~~

@@ -136,10 +136,11 @@ class UserAgent(object):
         self.device = parse_device(**ua_dict['device'])
 
     def __str__(self):
-        device = self.is_pc and "PC" or self.device.family
-        os = ("%s %s" % (self.os.family, self.os.version_string)).strip()
-        browser = ("%s %s" % (self.browser.family, self.browser.version_string)).strip()
-        return " / ".join([device, os, browser])
+        return "{device} / {os} / {browser}".format(
+            device=self.get_device(),
+            os=self.get_os(),
+            browser=self.get_browser()
+        )
 
     def __unicode__(self):
         return unicode(str(self))
@@ -162,6 +163,15 @@ class UserAgent(object):
         if 'Blackberry 95' in self.device.family:  # BB Torch devices
             return True
         return False
+
+    def get_device(self):
+        return self.is_pc and "PC" or self.device.family
+
+    def get_os(self):
+        return ("%s %s" % (self.os.family, self.os.version_string)).strip()
+
+    def get_browser(self):
+        return ("%s %s" % (self.browser.family, self.browser.version_string)).strip()
 
     @property
     def is_tablet(self):
@@ -250,6 +260,7 @@ class UserAgent(object):
         if self.browser.family in EMAIL_PROGRAM_FAMILIES:
             return True
         return False
+
 
 def parse(user_agent_string):
     return UserAgent(user_agent_string)

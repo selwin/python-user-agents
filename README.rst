@@ -27,10 +27,14 @@ as such:
 
 ::
 
-    pip install pyyaml ua-parser user-agents
+    pip install user-agents
 
 Alternatively, you can also get the latest source code from
 Github_ and install it manually.
+
+::
+
+    python setup.py install
 
 .. _Github: https://github.com/selwin/python-user-agents
 

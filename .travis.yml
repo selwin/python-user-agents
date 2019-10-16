@@ -9,7 +9,5 @@ python:
   - "3.7"
 install:
   - "python setup.py install"
-  - "pip install -U pip"
-  - "pip install pyyaml ua-parser"
 script:
   - python -m unittest discover

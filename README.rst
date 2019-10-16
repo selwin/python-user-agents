@@ -32,6 +32,10 @@ as such:
 Alternatively, you can also get the latest source code from
 Github_ and install it manually.
 
+::
+
+    python setup.py install
+
 .. _Github: https://github.com/selwin/python-user-agents
 
 Usage

@@ -273,7 +273,7 @@
         "is_mobile": true,
         "is_pc": false,
         "is_tablet": false,
-        "is_touch_capable": false,
+        "is_touch_capable": true,
         "ua_string": "Mozilla/5.0 (iPhone; U; CPU iPhone OS) (compatible; Googlebot-Mobile/2.1; http://www.google.com/bot.html)",
         "str": "Spider / Other / Mobile Safari"
     },
@@ -297,7 +297,7 @@
     },
     "windows_ce": {
         "is_bot": false,
-        "is_mobile": true,
+        "is_mobile": false,
         "is_pc": false,
         "is_tablet": false,
         "is_touch_capable": true,

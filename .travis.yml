@@ -10,6 +10,6 @@ python:
 install:
   - "python setup.py install"
   - "pip install -U pip"
-  - "pip install pyyaml ua-parser"
+  - "pip install -r requirements.txt"
 script:
   - python -m unittest discover

@@ -33,6 +33,9 @@ MOBILE_BROWSER_FAMILIES = (
     'IE Mobile',
     'Opera Mobile',
     'Opera Mini',
+    'Chrome Mobile',
+    'Chrome Mobile WebView',
+    'Chrome Mobile iOS',
 )
 
 TABLET_DEVICE_FAMILIES = (

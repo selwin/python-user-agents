@@ -30,6 +30,7 @@ MOBILE_OS_FAMILIES = (
 )
 
 MOBILE_BROWSER_FAMILIES = (
+    'IE Mobile',
     'Opera Mobile',
     'Opera Mini',
 )
@@ -215,7 +216,7 @@ class UserAgent(object):
         if self.device.family in TOUCH_CAPABLE_DEVICE_FAMILIES:
             return True
         if self.os.family == 'Windows':
-            if self.os.version_string.startswith('RT'):
+            if self.os.version_string.startswith(('RT', 'CE')):
                 return True
             if self.os.version_string.startswith('8') and 'Touch' in self.ua_string:
                 return True

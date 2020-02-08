@@ -154,6 +154,13 @@ Running Tests
 Changelog
 ---------
 
+Version 2.1 (2020-02-08)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  ``python-user-agents`` now require ``ua-parser>=0.9.0``. Thanks @jnozsc!
+-  Properly detect Chrome Mobile browser families. Thanks @jnozsc!
+
+
 Version 2.0 (2019-04-07)
 ~~~~~~~~~~~~~~~~~~~~~~~~
 

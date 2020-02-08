@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='user-agents',
-    version='2.0',
+    version='2.1',
     author='Selwin Ong',
     author_email='selwin.ong@gmail.com',
     packages=['user_agents'],

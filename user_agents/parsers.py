@@ -164,8 +164,6 @@ class UserAgent(object):
             return True
         if 'Blackberry 95' in self.device.family:  # BB Storm devices
             return True
-        if 'Blackberry 95' in self.device.family:  # BB Torch devices
-            return True
         return False
 
     def get_device(self):

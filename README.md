@@ -3,8 +3,8 @@ Python User Agents
 
 `user_agents` is a Python library that provides an easy way to identify/detect devices like mobile phones, tablets and their capabilities by parsing (browser/HTTP) user agent strings. The goal is to reliably detect whether:
 
--   User agent is a mobile, tablet or PC based device
--   User agent has touch capabilities (has touch screen)
+* User agent is a mobile, tablet or PC based device
+* User agent has touch capabilities (has touch screen)
 
 `user_agents` relies on the excellent [ua-parser](https://github.com/ua-parser/uap-python) to do the actual parsing of the raw user agent string.
 
@@ -57,11 +57,11 @@ str(user_agent) # returns "iPhone / iOS 5.1 / Mobile Safari 5.1"
 
 Currently these attributes are supported:
 
--   `is_mobile`: whether user agent is identified as a mobile phone (iPhone, Android phones, Blackberry, Windows Phone devices etc)
--   `is_tablet`: whether user agent is identified as a tablet device (iPad, Kindle Fire, Nexus 7 etc)
--   `is_pc`: whether user agent is identified to be running a traditional "desktop" OS (Windows, OS X, Linux)
--   `is_touch_capable`: whether user agent has touch capabilities
--   `is_bot`: whether user agent is a search engine crawler/spider
+* `is_mobile`: whether user agent is identified as a mobile phone (iPhone, Android phones, Blackberry, Windows Phone devices etc)
+* `is_tablet`: whether user agent is identified as a tablet device (iPad, Kindle Fire, Nexus 7 etc)
+* `is_pc`: whether user agent is identified to be running a traditional "desktop" OS (Windows, OS X, Linux)
+* `is_touch_capable`: whether user agent has touch capabilities
+* `is_bot`: whether user agent is a search engine crawler/spider
 
 For example:
 
@@ -126,50 +126,54 @@ Running Tests
 
 Changelog
 ---------
+### Version 2.2.0 (2020-08-23)
+* `ua-parser` >= 0.10.0 is required. Thanks @jnozsc!
+* Added `get_device()`, `get_os()` and `get_browser()` instance methods
+to `UserAgent`. Thanks @rodrigondec!
 
 ### Version 2.1 (2020-02-08)
 
--   `python-user-agents` now require `ua-parser>=0.9.0`. Thanks @jnozsc!
--   Properly detect Chrome Mobile browser families. Thanks @jnozsc!
+* `python-user-agents` now require `ua-parser>=0.9.0`. Thanks @jnozsc!
+* Properly detect Chrome Mobile browser families. Thanks @jnozsc!
 
 ### Version 2.0 (2019-04-07)
 
--   `python-user-agents` now require `ua-parser>=0.8.0`. Thanks @IMDagger!
+* `python-user-agents` now require `ua-parser>=0.8.0`. Thanks @IMDagger!
 
 ### Version 1.1
 
--   Fixes packaging issue
+* Fixes packaging issue
 
 ### Version 1.0
 
--   Adds compatibility with `ua-parser` 0.4.0
--   Access to more device information in `user_agent.device.brand` and `user_agent.device.model`
+* Adds compatibility with `ua-parser` 0.4.0
+* Access to more device information in `user_agent.device.brand` and `user_agent.device.model`
 
 ### Version 0.3.2
 
--   Better mobile detection
--   Better PC detection
+* Better mobile detection
+* Better PC detection
 
 ### Version 0.3.1
 
--   user\_agent.is\_mobile returns True when mobile spider is detected
+* user\_agent.is\_mobile returns True when mobile spider is detected
 
 ### Version 0.3.0
 
--   Added **str**/**unicode** methods for convenience of pretty string
+* Added **str**/**unicode** methods for convenience of pretty string
 
 ### Version 0.2.0
 
--   Fixed errors when running against newer versions if ua-parser
--   Support for Python 3
+* Fixed errors when running against newer versions if ua-parser
+* Support for Python 3
 
 ### Version 0.1.1
 
--   Added `is_bot` property
--   Symbian OS devices are now detected as a mobile device
+* Added `is_bot` property
+* Symbian OS devices are now detected as a mobile device
 
 ### Version 0.1
 
--   Initial release
+* Initial release
 
 Developed by the cool guys at [Stamps](http://stamps.co.id).

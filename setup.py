@@ -3,13 +3,13 @@ from setuptools import setup
 
 setup(
     name='user-agents',
-    version='2.1',
+    version='2.2.0',
     author='Selwin Ong',
     author_email='selwin.ong@gmail.com',
     packages=['user_agents'],
     url='https://github.com/selwin/python-user-agents',
     license='MIT',
-    description='A library to identify devices (phones, tablets) and their capabilities by parsing (browser/HTTP) user agent strings',
+    description='A library to identify devices (phones, tablets) and their capabilities by parsing browser user agent strings.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     zip_safe=False,

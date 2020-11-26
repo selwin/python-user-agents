@@ -107,6 +107,15 @@
         "ua_string": "Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10",
         "str": "iPad / iOS 3.2 / Mobile Safari 4.0.4"
     },
+    "ipad_puffin": {
+        "is_bot": false,
+        "is_mobile": false,
+        "is_pc": false,
+        "is_tablet": true,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (X11; U; Linux x86_64; nl-NL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.114 Safari/537.36 Puffin/5.2.3IT",
+        "str": "iPad / Linux / Puffin 5.2.3"
+    },
     "iphone": {
         "is_bot": false,
         "is_mobile": true,

@@ -195,16 +195,13 @@ class UserAgent(object):
         # First check for mobile device and mobile browser families
         if self.device.family in MOBILE_DEVICE_FAMILIES:
             return True
-        if self.device.family in TABLET_DEVICE_FAMILIES:
+        if self.device.family in TABLET_DEVICE_FAMILIES or self.is_tablet:
             return False
         if self.browser.family in MOBILE_BROWSER_FAMILIES:
             return True
         # Device is considered Mobile OS is Android and not tablet
         # This is not fool proof but would have to suffice for now
-        if ((self.os.family == 'Android' or self.os.family == 'Firefox OS')
-            and not self.is_tablet):
-            return True
-        if self.os.family == 'BlackBerry OS' and self.device.family != 'Blackberry Playbook':
+        if self.os.family in ['Android', 'Firefox OS', 'BlackBerry OS']:
             return True
         if self.os.family in MOBILE_OS_FAMILIES:
             return True

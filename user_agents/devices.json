@@ -8,6 +8,15 @@
         "ua_string": "Mozilla/5.0 (Android; Mobile; rv:27.0) Gecko/27.0 Firefox/27.0",
         "str": "Other / Android / Firefox Mobile 27"
     },
+    "kindle": {
+        "is_bot": false,
+        "is_mobile": false,
+        "is_pc": false,
+        "is_tablet": true,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Silk/85.3.5 like Chrome/85.0.4183.126 Safari/537.36",
+        "str": "Kindle / Linux / Amazon Silk 85.3.5"
+    },
     "blackberry_bold": {
         "is_bot": false,
         "is_mobile": true,

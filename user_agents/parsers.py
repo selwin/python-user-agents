@@ -64,6 +64,7 @@ TOUCH_CAPABLE_DEVICE_FAMILIES = (
     'BlackBerry Playbook',
     'Blackberry Playbook',
     'Kindle Fire',
+    'Kindle'
 )
 
 EMAIL_PROGRAM_FAMILIES = set((
@@ -241,6 +242,8 @@ class UserAgent(object):
 
     @property
     def is_pc(self):
+        if self.device.family in MOBILE_DEVICE_FAMILIES or self.device.family in TABLET_DEVICE_FAMILIES:
+            return False
         # Returns True for "PC" devices (Windows, Mac and Linux)
         if 'Windows NT' in self.ua_string or self.os.family in PC_OS_FAMILIES or \
            self.os.family == 'Windows' and self.os.version_string == 'ME':

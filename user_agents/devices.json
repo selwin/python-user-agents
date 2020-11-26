@@ -317,7 +317,7 @@
         "is_bot": false,
         "is_mobile": true,
         "is_pc": false,
-        "is_tablet": true,
+        "is_tablet": false,
         "is_touch_capable": true,
         "ua_string": "Opera/9.80 (Android 2.3.3; Linux; Opera Mobi/ADR-1202011015; U; en) Presto/2.9.201 Version/11.50",
         "str": "Opera / Android 2.3.3 / Opera Mobile 11.50"

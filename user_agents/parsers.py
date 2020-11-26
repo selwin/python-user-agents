@@ -179,6 +179,8 @@ class UserAgent(object):
     def is_tablet(self):
         if self.device.family in TABLET_DEVICE_FAMILIES:
             return True
+        if self.device.family in MOBILE_DEVICE_FAMILIES:
+            return False
         if (self.os.family == 'Android' and self._is_android_tablet()):
             return True
         if self.os.family == 'Windows' and self.os.version_string.startswith('RT'):
@@ -192,6 +194,8 @@ class UserAgent(object):
         # First check for mobile device and mobile browser families
         if self.device.family in MOBILE_DEVICE_FAMILIES:
             return True
+        if self.device.family in TABLET_DEVICE_FAMILIES:
+            return False
         if self.browser.family in MOBILE_BROWSER_FAMILIES:
             return True
         # Device is considered Mobile OS is Android and not tablet

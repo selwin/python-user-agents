@@ -50,6 +50,10 @@ TABLET_DEVICE_FAMILIES = (
     'Dell Streak',
 )
 
+TABLET_DEVICE_BRANDS = (
+    'Generic_Android_Tablet',
+)
+
 TOUCH_CAPABLE_OS_FAMILIES = (
     'iOS',
     'Android',
@@ -181,6 +185,8 @@ class UserAgent(object):
     def is_tablet(self):
         if self.device.family in TABLET_DEVICE_FAMILIES:
             return True
+        if self.device.brand in TABLET_DEVICE_BRANDS:
+            return True
         if self.device.family in MOBILE_DEVICE_FAMILIES:
             return False
         if (self.os.family == 'Android' and self._is_android_tablet()):
@@ -240,7 +246,9 @@ class UserAgent(object):
 
     @property
     def is_pc(self):
-        if self.device.family in MOBILE_DEVICE_FAMILIES or self.device.family in TABLET_DEVICE_FAMILIES:
+        if self.device.family in MOBILE_DEVICE_FAMILIES or \
+           self.device.family in TABLET_DEVICE_FAMILIES or \
+           self.device.brand in TABLET_DEVICE_BRANDS:
             return False
         # Returns True for "PC" devices (Windows, Mac and Linux)
         if 'Windows NT' in self.ua_string or self.os.family in PC_OS_FAMILIES or \

@@ -195,7 +195,7 @@ class UserAgent(object):
         # First check for mobile device and mobile browser families
         if self.device.family in MOBILE_DEVICE_FAMILIES:
             return True
-        if self.device.family in TABLET_DEVICE_FAMILIES or self.is_tablet:
+        if self.is_tablet or self.is_pc:
             return False
         if self.browser.family in MOBILE_BROWSER_FAMILIES:
             return True

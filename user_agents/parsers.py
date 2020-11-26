@@ -67,6 +67,7 @@ TOUCH_CAPABLE_OS_FAMILIES = (
 TOUCH_CAPABLE_DEVICE_FAMILIES = (
     'BlackBerry Playbook',
     'Blackberry Playbook',
+    'Generic Smartphone',
     'iPad',
     'Kindle Fire',
     'Kindle'

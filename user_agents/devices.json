@@ -80,6 +80,15 @@
         "ua_string": "Mozilla/5.0 (Linux; Android 10.0; X116L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36",
         "str": "X116L / Android 10.0 / Chrome 86.0.4240"
     },
+    "generic_smart_phone_puffin": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (X11; U; U; Linux x86_64; nl-nl) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36 Puffin/8.4.0.42081AP",
+        "str": "Generic Smartphone / Linux / Puffin 8.4.0"
+    },
     "google_bot": {
         "is_bot": true,
         "is_mobile": false,

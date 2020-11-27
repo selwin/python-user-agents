@@ -1,6 +1,9 @@
 sudo: false
 language: python
 dist: xenial
+arch:
+  - amd64
+  - ppc64le
 python:
   - "2.7"
   - "3.4"

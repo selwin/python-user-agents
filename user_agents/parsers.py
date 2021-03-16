@@ -50,6 +50,10 @@ TABLET_DEVICE_FAMILIES = (
     'Dell Streak',
 )
 
+TABLET_DEVICE_BRANDS = (
+    'Generic_Android_Tablet',
+)
+
 TOUCH_CAPABLE_OS_FAMILIES = (
     'iOS',
     'Android',
@@ -63,7 +67,10 @@ TOUCH_CAPABLE_OS_FAMILIES = (
 TOUCH_CAPABLE_DEVICE_FAMILIES = (
     'BlackBerry Playbook',
     'Blackberry Playbook',
+    'Generic Smartphone',
+    'iPad',
     'Kindle Fire',
+    'Kindle'
 )
 
 EMAIL_PROGRAM_FAMILIES = set((
@@ -179,6 +186,10 @@ class UserAgent(object):
     def is_tablet(self):
         if self.device.family in TABLET_DEVICE_FAMILIES:
             return True
+        if self.device.brand in TABLET_DEVICE_BRANDS:
+            return True
+        if self.device.family in MOBILE_DEVICE_FAMILIES:
+            return False
         if (self.os.family == 'Android' and self._is_android_tablet()):
             return True
         if self.os.family == 'Windows' and self.os.version_string.startswith('RT'):
@@ -192,14 +203,13 @@ class UserAgent(object):
         # First check for mobile device and mobile browser families
         if self.device.family in MOBILE_DEVICE_FAMILIES:
             return True
+        if self.is_tablet or self.is_pc:
+            return False
         if self.browser.family in MOBILE_BROWSER_FAMILIES:
             return True
         # Device is considered Mobile OS is Android and not tablet
         # This is not fool proof but would have to suffice for now
-        if ((self.os.family == 'Android' or self.os.family == 'Firefox OS')
-            and not self.is_tablet):
-            return True
-        if self.os.family == 'BlackBerry OS' and self.device.family != 'Blackberry Playbook':
+        if self.os.family in ['Android', 'Firefox OS', 'BlackBerry OS']:
             return True
         if self.os.family in MOBILE_OS_FAMILIES:
             return True
@@ -237,6 +247,10 @@ class UserAgent(object):
 
     @property
     def is_pc(self):
+        if self.device.family in MOBILE_DEVICE_FAMILIES or \
+           self.device.family in TABLET_DEVICE_FAMILIES or \
+           self.device.brand in TABLET_DEVICE_BRANDS:
+            return False
         # Returns True for "PC" devices (Windows, Mac and Linux)
         if 'Windows NT' in self.ua_string or self.os.family in PC_OS_FAMILIES or \
            self.os.family == 'Windows' and self.os.version_string == 'ME':

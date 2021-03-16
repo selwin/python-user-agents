@@ -8,6 +8,24 @@
         "ua_string": "Mozilla/5.0 (Android; Mobile; rv:27.0) Gecko/27.0 Firefox/27.0",
         "str": "Other / Android / Firefox Mobile 27"
     },
+    "android_tablet_chrome_mobile": {
+        "is_bot": false,
+        "is_mobile": false,
+        "is_pc": false,
+        "is_tablet": true,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (Linux; Android 9; SM-T820 Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/85.0.4183.101 Safari/537.36 ANDROID_APP",
+        "str": "Samsung SM-T820 / Android 9 / Chrome Mobile WebView 85.0.4183"
+    },
+    "kindle": {
+        "is_bot": false,
+        "is_mobile": false,
+        "is_pc": false,
+        "is_tablet": true,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Silk/85.3.5 like Chrome/85.0.4183.126 Safari/537.36",
+        "str": "Kindle / Linux / Amazon Silk 85.3.5"
+    },
     "blackberry_bold": {
         "is_bot": false,
         "is_mobile": true,
@@ -53,6 +71,24 @@
         "ua_string": "Mozilla/5.0 (Linux; U; Android 2.2; en-us; SCH-I800 Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
         "str": "SCH-I800 / Android 2.2 / Android 2.2"
     },
+    "generic_android_tablet": {
+        "is_bot": false,
+        "is_mobile": false,
+        "is_pc": false,
+        "is_tablet": true,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (Linux; Android 10.0; X116L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36",
+        "str": "X116L / Android 10.0 / Chrome 86.0.4240"
+    },
+    "generic_smart_phone_puffin": {
+        "is_bot": false,
+        "is_mobile": true,
+        "is_pc": false,
+        "is_tablet": false,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (X11; U; U; Linux x86_64; nl-nl) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36 Puffin/8.4.0.42081AP",
+        "str": "Generic Smartphone / Linux / Puffin 8.4.0"
+    },
     "google_bot": {
         "is_bot": true,
         "is_mobile": false,
@@ -88,6 +124,15 @@
         "is_touch_capable": true,
         "ua_string": "Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10",
         "str": "iPad / iOS 3.2 / Mobile Safari 4.0.4"
+    },
+    "ipad_puffin": {
+        "is_bot": false,
+        "is_mobile": false,
+        "is_pc": false,
+        "is_tablet": true,
+        "is_touch_capable": true,
+        "ua_string": "Mozilla/5.0 (X11; U; Linux x86_64; nl-NL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.114 Safari/537.36 Puffin/5.2.3IT",
+        "str": "iPad / Linux / Puffin 5.2.3"
     },
     "iphone": {
         "is_bot": false,
@@ -241,6 +286,15 @@
         "ua_string": "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1",
         "str": "PC / Ubuntu / Firefox 15.0.1"
     },
+    "windows_chrome_mobile": {
+        "is_bot": false,
+        "is_mobile": false,
+        "is_pc": true,
+        "is_tablet": false,
+        "is_touch_capable": false,
+        "ua_string": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.64 Safari/537.36Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0",
+        "str": "PC / Windows 10 / Chrome Mobile WebView 70.0.3538"
+    },
     "windows_ie": {
         "is_bot": false,
         "is_mobile": false,
@@ -317,7 +371,7 @@
         "is_bot": false,
         "is_mobile": true,
         "is_pc": false,
-        "is_tablet": true,
+        "is_tablet": false,
         "is_touch_capable": true,
         "ua_string": "Opera/9.80 (Android 2.3.3; Linux; Opera Mobi/ADR-1202011015; U; en) Presto/2.9.201 Version/11.50",
         "str": "Opera / Android 2.3.3 / Opera Mobile 11.50"

@@ -9,6 +9,7 @@ from .parsers import parse
 
 iphone_ua_string = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B179 Safari/7534.48.3'
 ipad_ua_string = 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10'
+ipad_mobile_chrome_ua_string = 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/86.0.4240.93 Mobile/15E148 Safari/604.1'
 galaxy_tab_ua_string = 'Mozilla/5.0 (Linux; U; Android 2.2; en-us; SCH-I800 Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1'
 galaxy_s3_ua_string = 'Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; GT-I9300 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
 kindle_fire_ua_string = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us; Silk/1.1.0-80) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16 Silk-Accelerated=true'
@@ -34,6 +35,7 @@ chromebook_ua_string = 'Mozilla/5.0 (X11; CrOS i686 0.12.433) AppleWebKit/534.30
 
 iphone_ua = parse(iphone_ua_string)
 ipad_ua = parse(ipad_ua_string)
+ipad_mobile_chrome_ua = parse(ipad_mobile_chrome_ua_string)
 galaxy_tab = parse(galaxy_tab_ua_string)
 galaxy_s3_ua = parse(galaxy_s3_ua_string)
 kindle_fire_ua = parse(kindle_fire_ua_string)
@@ -100,6 +102,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(nokia_n97_ua.is_tablet)
         self.assertTrue(windows_rt_ua.is_tablet)
         self.assertTrue(ipad_ua.is_tablet)
+        self.assertTrue(ipad_mobile_chrome_ua.is_tablet)
         self.assertTrue(playbook_ua.is_tablet)
         self.assertTrue(kindle_fire_ua.is_tablet)
         self.assertTrue(nexus_7_ua.is_tablet)
@@ -115,6 +118,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertTrue(nokia_n97_ua.is_mobile)
         self.assertFalse(windows_rt_ua.is_mobile)
         self.assertFalse(ipad_ua.is_mobile)
+        self.assertFalse(ipad_mobile_chrome_ua.is_mobile)
         self.assertFalse(playbook_ua.is_mobile)
         self.assertFalse(kindle_fire_ua.is_mobile)
         self.assertFalse(nexus_7_ua.is_mobile)
@@ -130,6 +134,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertTrue(iphone_ua.is_touch_capable)
         self.assertTrue(galaxy_s3_ua.is_touch_capable)
         self.assertTrue(ipad_ua.is_touch_capable)
+        self.assertTrue(ipad_mobile_chrome_ua.is_touch_capable)
         self.assertTrue(playbook_ua.is_touch_capable)
         self.assertTrue(kindle_fire_ua.is_touch_capable)
         self.assertTrue(nexus_7_ua.is_touch_capable)
@@ -151,6 +156,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(iphone_ua.is_pc)
         self.assertFalse(galaxy_s3_ua.is_pc)
         self.assertFalse(ipad_ua.is_pc)
+        self.assertFalse(ipad_mobile_chrome_ua.is_pc)
         self.assertFalse(playbook_ua.is_pc)
         self.assertFalse(kindle_fire_ua.is_pc)
         self.assertFalse(nexus_7_ua.is_pc)
@@ -174,6 +180,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertFalse(iphone_ua.is_bot)
         self.assertFalse(galaxy_s3_ua.is_bot)
         self.assertFalse(ipad_ua.is_bot)
+        self.assertFalse(ipad_mobile_chrome_ua.is_bot)
         self.assertFalse(playbook_ua.is_bot)
         self.assertFalse(kindle_fire_ua.is_bot)
         self.assertFalse(nexus_7_ua.is_bot)
@@ -213,6 +220,7 @@ class UserAgentsTest(unittest.TestCase):
     def test_strings(self):
         self.assertEqual(str(iphone_ua), "iPhone / iOS 5.1 / Mobile Safari 5.1")
         self.assertEqual(str(ipad_ua), "iPad / iOS 3.2 / Mobile Safari 4.0.4")
+        self.assertEqual(str(ipad_mobile_chrome_ua), "iPad / iOS 13.3 / Chrome Mobile iOS 86.0.4240")
         self.assertEqual(str(galaxy_tab), "Samsung SCH-I800 / Android 2.2 / Android 2.2")
         self.assertEqual(str(galaxy_s3_ua), "Samsung GT-I9300 / Android 4.0.4 / Android 4.0.4")
         self.assertEqual(str(kindle_fire_ua), "Kindle / Android / Amazon Silk 1.1.0-80")

@@ -135,7 +135,7 @@ class UserAgentsTest(unittest.TestCase):
         self.assertTrue(nexus_7_ua.is_touch_capable)
         self.assertTrue(windows_phone_ua.is_touch_capable)
         self.assertTrue(ie_touch_ua.is_touch_capable)
-        self.assertFalse(blackberry_bold_touch_ua.is_touch_capable)
+        self.assertTrue(blackberry_bold_touch_ua.is_touch_capable)
         self.assertFalse(blackberry_torch_ua.is_touch_capable)
         self.assertFalse(j2me_opera_ua.is_touch_capable)
         self.assertFalse(ie_ua.is_touch_capable)

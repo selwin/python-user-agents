@@ -162,6 +162,9 @@ class UserAgent(object):
         # Blackberry Bold Touch series begins with 99XX
         if 'blackberry 99' in self.device.family.lower():
             return True
+        # Blackberry Torch series begins with 98XX
+        if 'blackberry 98' in self.device.family.lower():
+            return True
         if 'blackberry 95' in self.device.family.lower():  # BB Storm devices
             return True
         return False

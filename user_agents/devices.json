@@ -31,7 +31,7 @@
         "is_mobile": true,
         "is_pc": false,
         "is_tablet": false,
-        "is_touch_capable": false,
+        "is_touch_capable": true,
         "ua_string": "Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; zh-TW) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.448 Mobile Safari/534.8+",
         "str": "BlackBerry 9800 / BlackBerry OS 6 / BlackBerry WebKit 6"
     },

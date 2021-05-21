@@ -159,10 +159,8 @@ class UserAgent(object):
     def _is_android_tablet(self):
         # Newer Android tablets don't have "Mobile" in their user agent string,
         # older ones like Galaxy Tab still have "Mobile" though they're not
-        if ('Mobile Safari' not in self.ua_string and
-                self.browser.family != "Firefox Mobile"):
-            return True
-        return False
+        return ('Mobile Safari' not in self.ua_string and
+                self.browser.family != "Firefox Mobile")
 
     def _is_blackberry_touch_capable_device(self):
         # A helper to determine whether a BB phone has touch capabilities
@@ -269,13 +267,11 @@ class UserAgent(object):
 
     @property
     def is_bot(self):
-        return True if self.device.family == 'Spider' else False
+        return self.device.family == 'Spider'
 
     @property
     def is_email_client(self):
-        if self.browser.family in EMAIL_PROGRAM_FAMILIES:
-            return True
-        return False
+        return self.browser.family in EMAIL_PROGRAM_FAMILIES
 
 
 def parse(user_agent_string):

@@ -1,3 +1,3 @@
 ua-parser==0.10.0
-PyYAML==5.3; python_version != '3.4'
-PyYAML==5.4; python_version == '3.4'  # the last version support py34
+PyYAML==5.3; python_version == '3.4'  # the last version support py34
+PyYAML==5.4; python_version != '3.4'

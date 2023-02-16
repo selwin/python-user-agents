@@ -261,6 +261,8 @@ class UserAgent(object):
             return False
         if 'Chrome OS' in self.os.family:
             return True
+        if 'Chromecast' in self.os.family:
+            return False
         if 'Linux' in self.ua_string and 'X11' in self.ua_string:
             return True
         return False

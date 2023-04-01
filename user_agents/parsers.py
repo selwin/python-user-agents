@@ -165,9 +165,12 @@ class UserAgent(object):
     def _is_blackberry_touch_capable_device(self):
         # A helper to determine whether a BB phone has touch capabilities
         # Blackberry Bold Touch series begins with 99XX
-        if 'Blackberry 99' in self.device.family:
+        if 'blackberry 99' in self.device.family.lower():
             return True
-        if 'Blackberry 95' in self.device.family:  # BB Storm devices
+        # Blackberry Torch series begins with 98XX
+        if 'blackberry 98' in self.device.family.lower():
+            return True
+        if 'blackberry 95' in self.device.family.lower():  # BB Storm devices
             return True
         return False
 

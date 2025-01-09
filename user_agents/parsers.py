@@ -1,7 +1,6 @@
 from collections import namedtuple
 
-from ua_parser import user_agent_parser
-from .compat import string_types
+from ua_parser import parser
 
 
 MOBILE_DEVICE_FAMILIES = (
@@ -93,7 +92,7 @@ EMAIL_PROGRAM_FAMILIES = set((
 ))
 
 def verify_attribute(attribute):
-    if isinstance(attribute, string_types) and attribute.isdigit():
+    if isinstance(attribute, str) and attribute.isdigit():
         return int(attribute)
 
     return attribute
@@ -140,11 +139,11 @@ def parse_device(family, brand, model):
 class UserAgent(object):
 
     def __init__(self, user_agent_string):
-        ua_dict = user_agent_parser.Parse(user_agent_string)
+        ua = parser.parse(user_agent_string).with_defaults()
         self.ua_string = user_agent_string
-        self.os = parse_operating_system(**ua_dict['os'])
-        self.browser = parse_browser(**ua_dict['user_agent'])
-        self.device = parse_device(**ua_dict['device'])
+        self.os = parse_operating_system(ua.os.family, ua.os.major, ua.os.minor, ua.os.patch)
+        self.browser = parse_browser(ua.user_agent.family, ua.user_agent.major, ua.user_agent.minor, ua.user_agent.patch)
+        self.device = parse_device(ua.device.family, ua.device.brand, ua.device.model)
 
     def __str__(self):
         return "{device} / {os} / {browser}".format(
@@ -152,9 +151,6 @@ class UserAgent(object):
             os=self.get_os(),
             browser=self.get_browser()
         )
-
-    def __unicode__(self):
-        return unicode(str(self))
 
     def _is_android_tablet(self):
         # Newer Android tablets don't have "Mobile" in their user agent string,

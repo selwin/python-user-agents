@@ -3,7 +3,6 @@ import os
 import unittest
 
 from ua_parser import user_agent_parser
-from . import compat
 from .parsers import parse
 
 
@@ -242,17 +241,8 @@ class UserAgentsTest(unittest.TestCase):
         self.assertEqual(str(android_firefox_aurora_ua), "Generic Smartphone / Android / Firefox Mobile 27.0")
 
     def test_unicode_strings(self):
-        try:
-            # Python 2
-            unicode_ua_str = unicode(devices['iphone']['user_agent'])
-            self.assertEqual(unicode_ua_str,
-                             u"iPhone / iOS 5.1 / Mobile Safari 5.1")
-            self.assertTrue(isinstance(unicode_ua_str, unicode))
-        except NameError:
-            # Python 3
-            unicode_ua_str = str(devices['iphone']['user_agent'])
-            self.assertEqual(unicode_ua_str,
-                             "iPhone / iOS 5.1 / Mobile Safari 5.1")
+        unicode_ua_str = str(devices['iphone']['user_agent'])
+        self.assertEqual(unicode_ua_str, "iPhone / iOS 5.1 / Mobile Safari 5.1")
 
 
 with open(os.path.join(os.path.dirname(__file__), 'devices.json')) as f:
@@ -271,6 +261,6 @@ def test_wrapper(items):
         # self.assertEqual(str(items['user_agent']), items['str'])
     return test_func
 
-for device, items in compat.iteritems(devices):
+for device, items in devices.items():
     items['user_agent'] = parse(items['ua_string'])
     setattr(UserAgentsTest, 'test_' + device, test_wrapper(items))

@@ -4,7 +4,7 @@ import unittest
 
 from ua_parser import user_agent_parser
 from . import compat
-from .parsers import parse
+from .parsers import parse, parse_browser, parse_operating_system
 
 
 iphone_ua_string = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B179 Safari/7534.48.3'
@@ -61,6 +61,28 @@ chromebook_ua = parse(chromebook_ua_string)
 
 
 class UserAgentsTest(unittest.TestCase):
+
+    def test_four_part_versions(self):
+        for parser in (parse_browser, parse_operating_system):
+            version = parser('Example', '1', '2', '3', '4')
+            self.assertEqual(version.version, (1, 2, 3, 4))
+            self.assertEqual(version.version_string, '1.2.3.4')
+
+    def test_zero_patch_minor(self):
+        for parser in (parse_browser, parse_operating_system):
+            version = parser('Example', '1', '2', '3', '0')
+            self.assertEqual(version.version, (1, 2, 3, 0))
+            self.assertEqual(version.version_string, '1.2.3.0')
+
+    def test_missing_patch_minor(self):
+        for parser in (parse_browser, parse_operating_system):
+            version = parser('Example', '1', '2', '3')
+            self.assertEqual(version.version, (1, 2, 3))
+            self.assertEqual(version.version_string, '1.2.3')
+
+    def test_blackberry_os_patch_minor(self):
+        self.assertEqual(blackberry_torch_ua.os.version, (6, 0, 0, 448))
+        self.assertEqual(blackberry_torch_ua.get_os(), 'BlackBerry OS 6.0.0.448')
 
     def test_user_agent_object_assignments(self):
         ua_dict = user_agent_parser.Parse(devices['iphone']['ua_string'])
@@ -228,9 +250,9 @@ class UserAgentsTest(unittest.TestCase):
         self.assertEqual(str(nexus_7_ua), "Asus Nexus 7 / Android 4.1.1 / Chrome 18.0.1025")
         self.assertEqual(str(windows_phone_ua), "Samsung SGH-i917 / Windows Phone 7.5 / IE Mobile 9.0")
         self.assertEqual(str(windows_rt_ua), "PC / Windows RT / IE 10.0")
-        self.assertEqual(str(blackberry_torch_ua), "BlackBerry 9800 / BlackBerry OS 6.0.0 / BlackBerry WebKit 6.0.0")
-        self.assertEqual(str(blackberry_bold_ua), "BlackBerry 9700 / BlackBerry OS 5.0.0 / BlackBerry 9700")
-        self.assertEqual(str(blackberry_bold_touch_ua), "BlackBerry 9930 / BlackBerry OS 7.0.0 / BlackBerry WebKit 7.0.0")
+        self.assertEqual(str(blackberry_torch_ua), "BlackBerry 9800 / BlackBerry OS 6.0.0.448 / BlackBerry WebKit 6.0.0")
+        self.assertEqual(str(blackberry_bold_ua), "BlackBerry 9700 / BlackBerry OS 5.0.0.862 / BlackBerry 9700")
+        self.assertEqual(str(blackberry_bold_touch_ua), "BlackBerry 9930 / BlackBerry OS 7.0.0.241 / BlackBerry WebKit 7.0.0")
         self.assertEqual(str(j2me_opera_ua), "Generic Feature Phone / Other / Opera Mini 9.80")
         self.assertEqual(str(ie_ua), "PC / Windows 8 / IE 10.0")
         self.assertEqual(str(ie_touch_ua), "PC / Windows 8 / IE 10.0")

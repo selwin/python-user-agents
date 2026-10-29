@@ -116,7 +116,7 @@ Browser = namedtuple('Browser', ['family', 'version', 'version_string'])
 
 def parse_browser(family, major=None, minor=None, patch=None, patch_minor=None):
     # Returns a browser object
-    version = parse_version(major, minor, patch)
+    version = parse_version(major, minor, patch, patch_minor)
     version_string = '.'.join([str(v) for v in version])
     return Browser(family, version, version_string)
 
@@ -125,7 +125,7 @@ OperatingSystem = namedtuple('OperatingSystem', ['family', 'version', 'version_s
 
 
 def parse_operating_system(family, major=None, minor=None, patch=None, patch_minor=None):
-    version = parse_version(major, minor, patch)
+    version = parse_version(major, minor, patch, patch_minor)
     version_string = '.'.join([str(v) for v in version])
     return OperatingSystem(family, version, version_string)
 
